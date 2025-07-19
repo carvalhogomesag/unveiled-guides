@@ -6,6 +6,8 @@ tags: "post"
 templateEngineOverride: md, njk
 ---
 
+![Vista do Palácio da Pena num dia de sol](/images/pena-palace-hero.jpg)
+
 You’ve seen the photos: a whimsical, multi-colored castle floating above the clouds in Sintra. It’s Portugal’s fairytale icon. But Pena Palace is much more than a pretty picture. It's a story of love, art, and a king’s wild imagination. Visiting it without knowing its secrets is like listening to a song with the volume on mute.
 
 ---
@@ -13,7 +15,7 @@ You’ve seen the photos: a whimsical, multi-colored castle floating above the c
 
 *   **Best For:** Romantics, photographers, and lovers of unique architecture.
 *   **Don't Miss:** The Queen's Terrace for iconic photos, the intricate Triton's Archway.
-*   **Ticket Tip:** This is arguably Portugal's most visited monument. **NEVER arrive without a ticket.** You'll save hours by booking a [**Pena Palace & Park Skip-the-Line Ticket**](https://www.getyourguide.com/sintra-l99/pena-palace-park-skip-the-line-entrance-ticket-t79596/?partner_id=PMW7G72) online.
+*   **Ticket Tip:** This is arguably Portugal's most visited monument. **NEVER arrive without a ticket.** The palace operates on a strict timed-entry system.
 *   **Time Needed:** A minimum of 3 hours is required to see the palace interior and wander the park.
 *   **Footwear:** Extremely comfortable shoes. You will do a lot of walking, much of it uphill.
 ---
@@ -30,11 +32,10 @@ The vibrant colors aren't random. The ocher yellow represents the gothic and med
 
 Pay close attention to the archway of the main entrance. That half-man, half-fish creature holding a shell is Triton, a mythological god of the sea. It's a dramatic, almost theatrical piece designed by the king himself, symbolizing the creation of the world. You are literally entering a new world of fantasy.
 
-<div class="recommendation-box">
-    <h4>Our #1 Tip: Book Your Timed-Entry Ticket Now</h4>
-    <p>Pena Palace operates with a <strong>strict timed-entry system</strong>. This means if you show up without a ticket, you will likely not get in. To guarantee your entry and walk past the long ticket-buying queue, the best solution is the official <a href="https://www.getyourguide.com/sintra-l99/pena-palace-park-skip-the-line-entrance-ticket-t79596/?partner_id=PMW7G72"><strong>Pena Palace & Park Skip-the-Line E-Ticket</strong></a>.</p>
-    <a href="https://www.getyourguide.com/sintra-l99/pena-palace-park-skip-the-line-entrance-ticket-t79596/?partner_id=PMW7G72" class="cta-button">
-        Check Prices & Available Time Slots
-    </a>
-    <p><small>Time slots, especially for the morning, sell out days or even weeks in advance during peak season.</small></p>
-</div>
+---
+### **Book Your Timed-Entry Ticket Directly**
+*Pena Palace operates on a strict timed-entry system. Check availability below to secure your spot and skip the purchase line.*
+
+<div data-gyg-href="https://widget.getyourguide.com/default/availability.frame" data-gyg-tour-id="79596" data-gyg-locale-code="en-US" data-gyg-currency="EUR" data-gyg-widget="availability" data-gyg-variant="horizontal" data-gyg-partner-id="PMW7G72"></div>
+
+<p><small>Morning time slots often sell out weeks in advance during peak season. Booking ahead is highly recommended to avoid disappointment.</small></p>
