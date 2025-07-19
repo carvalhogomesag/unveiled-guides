@@ -123,7 +123,7 @@ nav a:hover {
 
 
 /* --- CONTEÚDO DO ARTIGO (POST) --- */
-/* Estilo para a caixa de recomendação */
+/* Estilo para a caixa de recomendação (que pode ser usada no futuro) */
 .recommendation-box {
     background-color: var(--light-gray-bg);
     border: 1px solid var(--border-color);
@@ -170,4 +170,14 @@ footer {
     margin-top: 4rem;
     padding: 2rem 1rem;
     border-top: 1px solid var(--border-color);
+}
+
+/* --- ESTILOS PARA IMAGENS DE ARTIGO (NOVA SECÇÃO) --- */
+main img {
+    max-width: 100%; /* Garante que a imagem nunca é mais larga que o contentor */
+    height: auto;   /* Mantém a proporção da imagem */
+    border-radius: 8px; /* Adiciona cantos arredondados, como no nosso design */
+    margin: 1rem 0 2rem 0;   /* Adiciona espaço vertical antes e depois da imagem */
+    display: block; /* Garante que a margem automática funciona bem */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra subtil para dar profundidade */
 }

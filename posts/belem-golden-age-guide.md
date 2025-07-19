@@ -41,3 +41,8 @@ You can explore Belém on your own, but it's easy to feel overwhelmed by the sca
 The true magic, however, lies in having someone connect the dots for you—pointing out the hidden symbols in the Monastery's facade, explaining the figures on the Monument to the Discoveries, and telling the tales of the explorers who embarked from this very shore. This transforms a simple sightseeing trip into a narrative journey.
 
 For this reason, we believe the best way to experience Belém is with a small, dedicated group. This highly-rated [**guided walking tour**](https://www.getyourguide.com/lisbon-l42/walking-tour-small-group-belem-jeronimos-monastery-tickets-t915072/?partner_id=PMW7G72&cmp=share_to_earn) not only includes the skip-the-line ticket to the Monastery but also enriches the visit with the historical context that makes these stones come alive. It is an investment in understanding, not just seeing.
+
+---
+### Explore Other Highly-Rated Activities in Lisbon
+
+<div data-gyg-widget="activities" data-gyg-partner-id="PMW7G72" data-gyg-location-id="42"></div>
