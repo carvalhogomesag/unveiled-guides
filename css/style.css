@@ -21,6 +21,17 @@ body {
     -webkit-font-smoothing: antialiased; /* Melhora a renderização das fontes */
 }
 
+/* --- TOP BAR --- */
+.top-bar {
+    background-color: var(--primary-blue);
+    color: white;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-family: var(--display-font);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
 main {
     max-width: 1200px;
     margin: 0 auto;
