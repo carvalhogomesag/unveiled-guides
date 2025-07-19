@@ -3,16 +3,24 @@ title: "Your Expert Guides to Portugal"
 layout: "base.njk"
 ---
 
-<h2>Discover the Stories Behind the Sights</h2>
-<p>We provide in-depth guides to help you understand the rich history of Portugal's landmarks, transforming your visit from a simple photo-op into an unforgettable experience.</p>
+<div class="hero-section">
+    <h2>Discover the Stories Behind the Sights</h2>
+    <p>We provide in-depth guides to help you understand the rich history of Portugal's landmarks, transforming your visit from a simple photo-op into an unforgettable experience.</p>
+</div>
 
-<h3>Latest Guides</h3>
-<ul class="article-list">
+<div class="guides-grid">
     {%- for post in collections.post | reverse -%}
-    <li>
-        <a href="{{ post.url }}">
-            <strong>{{ post.data.title }}</strong>
-        </a>
-    </li>
+    <a href="{{ post.url }}" class="card-link">
+        <article class="card">
+            <div class="card-image-wrapper">
+                <img src="{{ post.data.featuredImage }}" alt="View of {{ post.data.title }}" class="card-image">
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">{{ post.data.title }}</h3>
+                <p class="card-summary">{{ post.data.summary }}</p>
+                <span class="card-read-more">Read Guide →</span>
+            </div>
+        </article>
+    </a>
     {%- endfor -%}
-</ul>
+</div>
