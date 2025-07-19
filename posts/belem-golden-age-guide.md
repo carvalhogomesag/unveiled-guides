@@ -4,6 +4,8 @@ layout: "base.njk"
 date: "2024-07-20"
 tags: "post"
 templateEngineOverride: md, njk
+featuredImage: "/images/jeronimos-cloister-hero.jpg"
+summary: "Explore the heart of Portugal's Golden Age. Understand why Jerónimos Monastery was built with the profits of spices and how this riverside district tells a story of global discovery."
 ---
 
 ![O claustro do Mosteiro dos Jerónimos banhado pelo sol da tarde](/images/jeronimos-cloister-hero.jpg)
