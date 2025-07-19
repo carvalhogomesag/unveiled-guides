@@ -9,7 +9,7 @@ summary: "Dive into one of the world's most impressive aquariums. Learn about th
 ---
 
 ![Vista do tanque central do Oceanário de Lisboa, com raias e tubarões](/images/lisbon-oceanarium-main.jpg)
-*(Nota: Encontre uma imagem impressionante do tanque central ou da arquitetura exterior do Oceanário e nomeie-a assim)*
+
 
 Located in the modern Parque das Nações district, Lisbon's Oceanário is consistently ranked among the best aquariums in the world. But it's much more than just a collection of fish tanks. It’s an architectural marvel with a powerful conservation message, designed to make you feel like you're exploring a single, global ocean.
 
