@@ -1,0 +1,173 @@
+/* --- GERAL & TIPOGRAFIA --- */
+/* Inspirado na clareza e profissionalismo do GetYourGuide */
+
+:root {
+    --primary-blue: #005A9C;  /* Um azul corporativo, credível */
+    --accent-gold: #FFC107;   /* Um toque de dourado para destaque, remete a Portugal */
+    --dark-text: #222222;    /* Texto quase preto, mas mais suave que o #000 */
+    --light-gray-bg: #f8f9fa; /* Fundo muito claro para secções de destaque */
+    --border-color: #dee2e6; /* Cor para bordas subtis */
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; /* Fontes modernas e legíveis */
+    line-height: 1.7; /* Espaçamento entre linhas generoso para leitura fácil */
+    color: var(--dark-text);
+    background-color: #ffffff; /* Fundo branco limpo */
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto; /* Mais espaço no topo/fundo */
+    padding: 0 1rem;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Merriweather', 'Georgia', serif; /* Fonte serifada para títulos, dá um ar mais "histórico" e jornalístico */
+    color: var(--primary-blue);
+    line-height: 1.3;
+}
+
+a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* --- CABEÇALHO (HEADER) --- */
+
+header {
+    background-color: white;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+header h1 a {
+    color: var(--dark-text);
+    font-size: 2rem;
+    font-family: 'Merriweather', 'Georgia', serif;
+    font-weight: 700;
+}
+
+header h1 a:hover {
+    text-decoration: none;
+    color: var(--primary-blue);
+}
+
+nav {
+    margin-top: 1rem;
+}
+
+nav a {
+    color: var(--dark-text);
+    margin: 0 15px;
+    font-weight: 600;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1rem;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent; /* Efeito subtil no hover */
+    transition: border-color 0.2s ease-in-out;
+}
+
+nav a:hover {
+    text-decoration: none;
+    color: var(--primary-blue);
+    border-bottom-color: var(--primary-blue);
+}
+
+/* --- LISTA DE ARTIGOS (HOME) --- */
+
+.article-list {
+    list-style: none;
+    padding: 0;
+}
+
+.article-list li {
+    background: #fff;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.article-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.article-list a {
+    text-decoration: none;
+}
+
+.article-list strong {
+    font-size: 1.5rem;
+    color: var(--primary-blue);
+    font-family: 'Merriweather', 'Georgia', serif;
+}
+
+.article-list time {
+    font-size: 0.9rem;
+    color: #6c757d;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+
+/* --- CONTEÚDO DO ARTIGO (POST) --- */
+/* Estilo para a caixa de recomendação */
+.recommendation-box {
+    background-color: var(--light-gray-bg);
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--primary-blue);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 8px;
+}
+
+.recommendation-box h4 {
+    margin-top: 0;
+    color: var(--dark-text);
+    font-size: 1.2rem;
+}
+
+/* Estilo para o nosso botão de CTA principal */
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-blue);
+    color: white !important; /* !important para garantir que sobrescreve a cor do link */
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.cta-button:hover {
+    background-color: #00457a; /* Um azul um pouco mais escuro */
+    transform: translateY(-2px);
+    text-decoration: none !important;
+    color: white !important;
+}
+
+
+/* --- RODAPÉ (FOOTER) --- */
+
+footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-top: 4rem;
+    padding: 2rem 1rem;
+    border-top: 1px solid var(--border-color);
+}

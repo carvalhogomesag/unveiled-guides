@@ -1,0 +1,9 @@
+# Pasta de dependências do Node
+node_modules/
+
+# Pasta de output do Eleventy
+_site/
+
+# Ficheiros de sistema do macOS e Windows
+.DS_Store
+Thumbs.db

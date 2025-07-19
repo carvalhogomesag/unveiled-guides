@@ -1,0 +1,19 @@
+---
+title: "Your Expert Guides to Portugal"
+layout: "base.njk"
+---
+
+<h2>Discover the Stories Behind the Sights</h2>
+<p>We provide in-depth guides to help you understand the rich history of Portugal's landmarks, transforming your visit from a simple photo-op into an unforgettable experience.</p>
+
+<h3>Latest Guides</h3>
+<ul class="article-list">
+    {%- for post in collections.post | reverse -%}
+    <li>
+        <a href="{{ post.url }}">
+            <strong>{{ post.data.title }}</strong>
+            <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+        </a>
+    </li>
+    {%- endfor -%}
+</ul>
