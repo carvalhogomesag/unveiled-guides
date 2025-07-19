@@ -5,12 +5,12 @@ module.exports = function(eleventyConfig) {
   // Registar o plugin com o Eleventy
   eleventyConfig.addPlugin(pluginRss);
 
-  // Pass through (copy) de ficheiros estáticos (a nossa pasta CSS)
-    eleventyConfig.addPassthroughCopy("./css/");
+  // Pass through (copy) de ficheiros estáticos para o site final
+  eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("images"); // <-- ESTA É A LINHA QUE ESTAVA A FALTAR
 
-  // Adiciona os filtros de data que estávamos a usar no index.njk
+  // Adiciona os filtros de data para os templates
   eleventyConfig.addFilter("readableDate", dateObj => {
-    // Usar o locale 'en-GB' para o formato Dia/Mês/Ano se preferir, ou 'en-US' para Mês/Dia/Ano
     return new Date(dateObj).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   });
 
@@ -25,8 +25,6 @@ module.exports = function(eleventyConfig) {
       includes: "_includes",
       output: "_site",
     },
-    // ---- AQUI ESTÁ A CORREÇÃO CRUCIAL ----
-    // Diz ao Eleventy para primeiro processar o Markdown e depois o Nunjucks nos ficheiros .md
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk"
   };
