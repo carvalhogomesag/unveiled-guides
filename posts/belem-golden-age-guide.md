@@ -32,17 +32,16 @@ Look closely at the columns, doorways, and windows. This isn't just standard Got
 
 ### Secret #2: The True Taste of an Empire
 
-Just a short walk from the monastery, you'll find the home of the one and only *Pastel de Belém*. The recipe is a secret, originating from the monks themselves. While you can find *pastéis de nata* all over Portugal, only here can you taste the original. The queue often snakes around the block, a testament to its fame. For those who value their time, it's worth knowing that some walking tours have a clever arrangement to let you [**sample the original tart without facing the infamous queue**](https://www.getyourguide.com/lisbon-l42/walking-tour-small-group-belem-jeronimos-monastery-tickets-t915072/?partner_id=PMW7G72&cmp=share_to_earn).
+Just a short walk from the monastery, you'll find the home of the one and only *Pastel de Belém*. The recipe is a secret, originating from the monks themselves. While you can find *pastéis de nata* all over Portugal, only here can you taste the original. The queue often snakes around the block, a testament to its fame.
 
-## Making the Most of Your Visit
+## Our Recommendation: A Guided Journey into the Golden Age
 
-You can explore Belém on your own, but it's easy to feel overwhelmed by the scale of the monuments and the crowds. The queue for the Monastery alone can consume hours of your day. A golden tip here is to secure your entry in advance.
+You can explore Belém on your own, but it's easy to feel overwhelmed by the scale of the monuments and the crowds. The true magic lies in having someone connect the dots for you—pointing out the hidden symbols in the Monastery's facade, telling the tales of the explorers who embarked from this very shore, and even letting you skip the infamous queues for both the Monastery and the original Pastéis de Belém.
 
-The true magic, however, lies in having someone connect the dots for you—pointing out the hidden symbols in the Monastery's facade, explaining the figures on the Monument to the Discoveries, and telling the tales of the explorers who embarked from this very shore. This transforms a simple sightseeing trip into a narrative journey.
-
-For this reason, we believe the best way to experience Belém is with a small, dedicated group. This highly-rated [**guided walking tour**](https://www.getyourguide.com/lisbon-l42/walking-tour-small-group-belem-jeronimos-monastery-tickets-t915072/?partner_id=PMW7G72&cmp=share_to_earn) not only includes the skip-the-line ticket to the Monastery but also enriches the visit with the historical context that makes these stones come alive. It is an investment in understanding, not just seeing.
+For this reason, we believe the best way to experience Belém is with a small, dedicated group. This specific walking tour has an incredible 4.9/5 star rating and covers all the highlights in a seamless, enriching way.
 
 ---
-### Explore Other Highly-Rated Activities in Lisbon
+### **Book This Highly-Rated Tour Directly**
+*Check availability for the guided walking tour of Belém below.*
 
-<div data-gyg-widget="activities" data-gyg-partner-id="PMW7G72" data-gyg-location-id="42"></div>
+<div data-gyg-href="https://widget.getyourguide.com/default/availability.frame" data-gyg-tour-id="915072" data-gyg-locale-code="en-US" data-gyg-currency="EUR" data-gyg-widget="availability" data-gyg-variant="horizontal" data-gyg-partner-id="PMW7G72"></div>
