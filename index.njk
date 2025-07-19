@@ -3,11 +3,6 @@ title: "Your Expert Guides to Portugal"
 layout: "base.njk"
 ---
 
-<div class="hero-section">
-    <h2>Discover the Stories Behind the Sights</h2>
-    <p>We provide in-depth guides to help you understand the rich history of Portugal's landmarks, transforming your visit from a simple photo-op into an unforgettable experience.</p>
-</div>
-
 <div class="guides-grid">
     {%- for post in collections.post | reverse -%}
     <a href="{{ post.url }}" class="card-link">

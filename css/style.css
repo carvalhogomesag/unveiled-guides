@@ -3,39 +3,28 @@
 
 :root {
     --primary-blue: #005A9C;
-    --accent-teal: #14B8A6; /* Uma cor vibrante para acentos, inspirada no Lisboa Secreta */
-    --dark-text: #1f2937; /* Um cinza-escuro moderno */
+    --accent-teal: #14B8A6;
+    --dark-text: #1f2937;
     --light-gray-bg: #f8f9fa;
     --border-color: #e5e7eb;
-    --display-font: 'Poppins', sans-serif; /* Fonte ousada para títulos */
-    --body-font: 'Source Serif 4', serif; /* Fonte serifada elegante para o texto */
+    --display-font: 'Poppins', sans-serif;
+    --body-font: 'Source Serif 4', serif;
 }
 
 body {
     font-family: var(--body-font);
     line-height: 1.7;
     color: var(--dark-text);
-    background: linear-gradient(to bottom, white, #f8f9fa); /* Fundo com gradiente subtil */
+    background: #fdfdfd; /* Fundo branco ligeiramente quebrado em todo o site */
     margin: 0;
     padding: 0;
-    -webkit-font-smoothing: antialiased; /* Melhora a renderização das fontes */
-}
-
-/* --- TOP BAR --- */
-.top-bar {
-    background-color: var(--primary-blue);
-    color: white;
-    text-align: center;
-    padding: 0.5rem 1rem;
-    font-family: var(--display-font);
-    font-size: 0.9rem;
-    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
 }
 
 main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem 1.5rem;
+    padding: 3rem 1.5rem; /* Espaçamento para o conteúdo principal */
 }
 
 a {
@@ -59,19 +48,31 @@ a:hover {
     font-weight: 700;
 }
 
-/* --- CABEÇALHO --- */
-header {
+/* --- BLOCO DE CABEÇALHO UNIFICADO --- */
+.header-block {
+    background-color: white;
+    padding: 2rem 1.5rem 3rem 1.5rem;
     text-align: center;
-    padding: 2rem 1rem;
-}
-header h1 a {
-    font-family: var(--display-font);
-    font-size: 2.5rem;
-    color: var(--dark-text);
-    letter-spacing: -1px;
+    border-bottom: 1px solid var(--border-color);
 }
 
-nav { margin-top: 1rem; }
+/* HEADER (DENTRO DO BLOCO) */
+header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.logo-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+/* NAV */
+nav {
+    margin-top: 0;
+}
+
 nav a {
     font-family: var(--display-font);
     font-weight: 700;
@@ -82,12 +83,13 @@ nav a {
     letter-spacing: 0.5px;
 }
 
-/* --- SECÇÃO HERO (TOPO DA HOME) --- */
+/* SECÇÃO HERO (DENTRO DO BLOCO) */
 .hero-section {
-    text-align: center;
-    padding: 2rem 1rem;
-    margin-bottom: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 1rem 0 1rem; /* Espaço ACIMA do h2 */
 }
+
 .hero-section h2 {
     font-family: var(--display-font);
     font-size: 3rem;
@@ -95,12 +97,12 @@ nav a {
     color: var(--primary-blue);
     margin-bottom: 1rem;
 }
+
 .hero-section p {
     font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto;
     color: #4b5563;
 }
+
 
 /* --- GRELHA DE CARDS (HOME) --- */
 .guides-grid {
@@ -186,16 +188,23 @@ a.card-link:hover .card-image {
 
 /* --- ESTILOS DE ARTIGO INDIVIDUAL --- */
 .article-content {
-    max-width: 750px;
+    max-width: 800px; /* Aumentei um pouco para melhor legibilidade */
     margin: 0 auto;
+    background-color: white; /* Fundo branco para o artigo, para contrastar com o fundo do body */
+    padding: 2rem 3rem; /* Espaçamento interno */
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+}
+.article-content h1, .article-content h2, .article-content h3 {
+    font-family: var(--display-font);
 }
 .article-content img {
-    max-width: 100%; /* Garante que a imagem nunca ultrapassa a largura */
+    max-width: 100%;
     height: auto;
-    border-radius: 12px; /* Cantos arredondados para a imagem */
-    margin: 2rem 0; /* Espaçamento vertical */
+    border-radius: 12px;
+    margin: 2rem 0;
     display: block;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* Sombra para dar profundidade */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
 /* --- RODAPÉ --- */
