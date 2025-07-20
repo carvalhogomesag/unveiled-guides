@@ -1,6 +1,6 @@
 ---
 title: "Beyond the Glass: A Guide to Lisbon's World-Class Oceanarium"
-layout: "base.njk"
+layout: "post.njk"
 date: "2024-07-20"
 tags: "post"
 templateEngineOverride: md, njk

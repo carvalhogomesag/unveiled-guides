@@ -1,0 +1,33 @@
+---
+layout: "base.njk"
+---
+<article class="article-layout">
+    <div class="article-main-content">
+        <header class="article-header">
+            <h1 class="article-title">{{ title }}</h1>
+            <div class="article-meta">
+                <div class="author-info">
+                    <img src="/images/site/author-avatar.jpg" alt="Author's photo" class="author-avatar">
+                    <span>By Unveiled Guides Team</span>
+                </div>
+                <div class="share-buttons">
+                    <!-- Links de Partilha (simplificados) -->
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absoluteUrl(eleventy.server.url) }}" target="_blank" aria-label="Share on Facebook">FB</a>
+                    <a href="https://twitter.com/intent/tweet?url={{ page.url | absoluteUrl(eleventy.server.url) }}&text={{ title }}" target="_blank" aria-label="Share on Twitter">TW</a>
+                    <a href="mailto:?subject={{ title }}&body=Check out this guide: {{ page.url | absoluteUrl(eleventy.server.url) }}" aria-label="Share via Email">EM</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="article-body">
+            {{ content | safe }}
+        </div>
+    </div>
+
+    <aside class="article-sidebar">
+        <div class="sidebar-widget-sticky">
+            <h4>Top Experiences in Lisbon</h4>
+            <div data-gyg-href="https://widget.getyourguide.com/default/activities.frame" data-gyg-locale-code="en-US" data-gyg-widget="activities" data-gyg-number-of-items="3" data-gyg-partner-id="PMW7G72" data-gyg-q="lisboa"></div>
+        </div>
+    </aside>
+</article>

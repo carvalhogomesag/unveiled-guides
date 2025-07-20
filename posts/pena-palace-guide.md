@@ -1,6 +1,6 @@
 ---
 title: "Don't Visit Pena Palace Until You Read This: A Historian's Guide"
-layout: "base.njk"
+layout: "post.njk"
 date: "2024-05-21"
 tags: "post"
 templateEngineOverride: md, njk

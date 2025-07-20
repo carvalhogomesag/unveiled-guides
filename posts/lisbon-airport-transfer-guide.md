@@ -1,6 +1,6 @@
 ---
 title: "Landing in Lisbon: A Local's Guide to Navigating the Airport Arrival"
-layout: "base.njk"
+layout: "post.njk"
 date: "2024-07-20"
 tags: "post"
 templateEngineOverride: md, njk

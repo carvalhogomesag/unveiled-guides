@@ -1,6 +1,6 @@
 ---
 title: "The Church Built on Spice & Gold: An Insider's Guide to Belém"
-layout: "base.njk"
+layout: "post.njk"
 date: "2024-07-20"
 tags: "post"
 templateEngineOverride: md, njk

@@ -56,7 +56,6 @@ a:hover {
     border-bottom: 1px solid var(--border-color);
 }
 
-/* HEADER (DENTRO DO BLOCO) */
 header {
     max-width: 1200px;
     margin: 0 auto;
@@ -68,7 +67,6 @@ header {
     margin-bottom: 1rem;
 }
 
-/* NAV */
 nav {
     margin-top: 0;
 }
@@ -83,11 +81,11 @@ nav a {
     letter-spacing: 0.5px;
 }
 
-/* SECÇÃO HERO (DENTRO DO BLOCO) */
+/* --- SECÇÃO HERO (TOPO DA HOME) --- */
 .hero-section {
     max-width: 800px;
     margin: 0 auto;
-    padding: 3rem 1rem 0 1rem; /* Espaço ACIMA do h2 */
+    padding: 3rem 1rem 0 1rem;
 }
 
 .hero-section h2 {
@@ -102,7 +100,6 @@ nav a {
     font-size: 1.2rem;
     color: #4b5563;
 }
-
 
 /* --- GRELHA DE CARDS (HOME) --- */
 .guides-grid {
@@ -182,29 +179,128 @@ a.card-link:hover .card-image {
     align-self: flex-start;
     font-size: 1rem;
 }
+
 .card-read-more:hover {
     color: var(--accent-teal);
 }
 
-/* --- ESTILOS DE ARTIGO INDIVIDUAL --- */
-.article-content {
-    max-width: 800px; /* Aumentei um pouco para melhor legibilidade */
-    margin: 0 auto;
-    background-color: white; /* Fundo branco para o artigo, para contrastar com o fundo do body */
-    padding: 2rem 3rem; /* Espaçamento interno */
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+/* --- LAYOUT DE ARTIGO EM COLUNAS (NOVA SECÇÃO) --- */
+.article-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Por defeito, uma coluna para telemóveis */
+    gap: 3rem;
+    align-items: flex-start;
 }
-.article-content h1, .article-content h2, .article-content h3 {
+
+@media (min-width: 992px) { /* A magia acontece em ecrãs maiores */
+    .article-layout {
+        grid-template-columns: 2.5fr 1fr; /* Coluna principal ligeiramente maior */
+    }
+}
+
+.article-main-content {
+    background: white;
+    padding: 2rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+}
+
+/* --- CABEÇALHO DO ARTIGO --- */
+.article-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+}
+
+.article-title {
     font-family: var(--display-font);
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Tamanho de fonte responsivo */
+    line-height: 1.1;
+    color: var(--dark-text);
+    margin: 0 0 1.5rem 0;
 }
-.article-content img {
+
+.article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #6b7280;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+}
+
+.author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.share-buttons a {
+    display: inline-block;
+    color: #9ca3af;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    margin-left: 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+.share-buttons a:hover {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    color: white;
+    text-decoration: none;
+    transform: scale(1.1);
+}
+
+/* --- CORPO DO ARTIGO --- */
+.article-body {
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+.article-body img {
     max-width: 100%;
     height: auto;
     border-radius: 12px;
     margin: 2rem 0;
     display: block;
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+.article-body h2, .article-body h3 {
+    margin-top: 2.5em;
+    font-family: var(--display-font);
+}
+
+/* --- SIDEBAR DO ARTIGO --- */
+.article-sidebar {
+    width: 100%;
+}
+
+.sidebar-widget-sticky {
+    position: sticky;
+    top: 2rem;
+    background: var(--light-gray-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.sidebar-widget-sticky h4 {
+    font-family: var(--display-font);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--dark-text);
 }
 
 /* --- RODAPÉ --- */
