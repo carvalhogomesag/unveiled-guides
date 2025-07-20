@@ -108,14 +108,17 @@ a:hover {
         display: block;
     }
 
+    /* Esconde o contentor da navegação em mobile */
     .main-nav-wrapper {
-        display: none; /* Esconde a navegação de desktop */
+        display: none; 
     }
     
     .main-nav {
+        /* Posição inicial: fora da tela */
         position: fixed;
         inset: 0 0 0 30%;
         
+        /* Layout e Estilo */
         flex-direction: column;
         padding: min(20vh, 10rem) 2em;
         gap: 2rem;
@@ -125,11 +128,13 @@ a:hover {
         backdrop-filter: blur(1rem);
         -webkit-backdrop-filter: blur(1rem);
         
+        /* Animação */
         transform: translateX(100%);
         transition: transform 350ms ease-out;
         z-index: 1000;
     }
     
+    /* Quando o JavaScript adiciona data-visible="true", o menu desliza para a tela */
     .main-nav[data-visible="true"] {
         transform: translateX(0%);
     }
@@ -138,14 +143,15 @@ a:hover {
         font-size: 1.1rem;
     }
 
+    /* Controla a troca de ícone hambúrguer/X */
     .mobile-nav-toggle[aria-expanded="true"] .icon-hamburger { display: none; }
     .mobile-nav-toggle[aria-expanded="true"] .icon-close { display: block; }
 
+    /* Impede o scroll do conteúdo principal quando o menu está aberto */
     body.body--nav-open {
         overflow: hidden;
     }
 }
-
 
 /* --- SECÇÃO HERO (TOPO DA HOME) --- */
 .hero-section {
