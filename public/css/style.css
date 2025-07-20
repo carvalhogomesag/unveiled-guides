@@ -94,7 +94,7 @@ a:hover {
     text-decoration: none;
 }
 
-/* BOTÃO HAMBÚRGUER E MENU MODAL */
+/* --- MENU MODAL (MOBILE) --- */
 .mobile-nav-toggle {
     display: none;
     z-index: 9999;
@@ -152,6 +152,8 @@ a:hover {
     align-items: center;
     transform: translateY(-100%);
     transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    overflow-y: auto;
+    padding: 5rem 1rem;
 }
 
 .fullscreen-nav[data-visible="true"] {
@@ -166,7 +168,7 @@ a:hover {
 }
 
 .fullscreen-nav__item {
-    margin: 1rem 0;
+    margin: 0.75rem 0;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.4s ease, transform 0.4s ease;
@@ -190,7 +192,7 @@ a:hover {
 .fullscreen-nav__link {
     color: white;
     font-family: var(--display-font);
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
     text-transform: uppercase;
     text-decoration: none;
     padding: 0.5rem 1rem;
@@ -208,7 +210,6 @@ a:hover {
     .mobile-nav-toggle { display: none; }
 }
 
-
 /* --- SECÇÃO HERO (TOPO DA HOME) --- */
 .hero-section {
     max-width: 800px;
@@ -216,7 +217,6 @@ a:hover {
     padding: 2rem 1rem;
     text-align: center;
 }
-
 .hero-section h2 {
     font-family: var(--display-font);
     font-size: clamp(1.8rem, 7vw, 2.8rem);
@@ -224,7 +224,6 @@ a:hover {
     color: var(--primary-blue);
     margin-bottom: 1rem;
 }
-
 .hero-section p {
     font-size: 1.1rem;
     color: #4b5563;
@@ -236,13 +235,11 @@ a:hover {
     grid-template-columns: 1fr;
     gap: 2rem;
 }
-
 @media (min-width: 600px) {
     .guides-grid {
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
 }
-
 a.card-link {
     text-decoration: none;
     color: inherit;
@@ -250,12 +247,10 @@ a.card-link {
     border-radius: 16px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 a.card-link:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px -15px rgba(0, 90, 156, 0.3);
 }
-
 .card {
     background-color: white;
     border-radius: 16px;
@@ -266,38 +261,32 @@ a.card-link:hover {
     height: 100%;
     border: 1px solid var(--border-color);
 }
-
 .card-image-wrapper {
     height: 220px;
     overflow: hidden;
     position: relative;
 }
-
 .card-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
 }
-
 a.card-link:hover .card-image {
     transform: scale(1.05);
 }
-
 .card-content {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
-
 .card-title {
     font-family: var(--display-font);
     font-size: 1.5rem;
     margin: 0 0 0.75rem 0;
     color: var(--dark-text);
 }
-
 .card-summary {
     font-family: var(--body-font);
     font-size: 1.05rem;
@@ -306,7 +295,6 @@ a.card-link:hover .card-image {
     flex-grow: 1;
     color: #4b5563;
 }
-
 .card-read-more {
     font-family: var(--display-font);
     font-weight: 700;
@@ -314,7 +302,6 @@ a.card-link:hover .card-image {
     align-self: flex-start;
     font-size: 1rem;
 }
-
 .card-read-more:hover {
     color: var(--accent-teal);
 }
@@ -326,21 +313,18 @@ a.card-link:hover .card-image {
     gap: 2rem;
     align-items: flex-start;
 }
-
 @media (min-width: 992px) {
     .article-layout {
         grid-template-columns: 2.5fr 1fr;
         gap: 3rem;
     }
 }
-
 .article-main-content {
     background: white;
     padding: 1.5rem;
     border-radius: 12px;
     box-shadow: 0 5px 25px rgba(0,0,0,0.05);
 }
-
 @media (min-width: 768px) {
     .article-main-content {
         padding: 2rem 3rem;
@@ -353,7 +337,6 @@ a.card-link:hover .card-image {
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 1.5rem;
 }
-
 .article-title {
     font-family: var(--display-font);
     font-size: clamp(1.8rem, 6vw, 3.2rem);
@@ -361,7 +344,6 @@ a.card-link:hover .card-image {
     color: var(--dark-text);
     margin: 0 0 1.5rem 0;
 }
-
 .article-meta {
     display: flex;
     justify-content: space-between;
@@ -371,12 +353,10 @@ a.card-link:hover .card-image {
     flex-wrap: wrap;
     gap: 1rem;
 }
-
 .author-info {
     display: flex;
     align-items: center;
 }
-
 .author-avatar {
     width: 40px;
     height: 40px;
@@ -384,7 +364,6 @@ a.card-link:hover .card-image {
     margin-right: 10px;
     object-fit: cover;
 }
-
 .share-buttons a {
     display: inline-block;
     color: #9ca3af;
@@ -431,7 +410,6 @@ a.card-link:hover .card-image {
 .article-sidebar {
     width: 100%;
 }
-
 .sidebar-widget-sticky {
     position: static;
     top: auto;
@@ -439,7 +417,6 @@ a.card-link:hover .card-image {
     padding: 1.5rem;
     border-radius: 12px;
 }
-
 @media (min-width: 992px) {
     .sidebar-widget-sticky {
         position: sticky;
