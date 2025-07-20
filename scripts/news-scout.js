@@ -1,17 +1,26 @@
-// Importa a biblioteca da News API e do Nodemailer
 const NewsAPI = require('newsapi');
 const nodemailer = require('nodemailer');
 
-// --- CONFIGURAÇÃO (Altere estes valores) ---
+// --- CONFIGURAÇÃO OTIMIZADA ---
 
-// 1. A sua chave da News API (será lida dos segredos do GitHub)
 const NEWS_API_KEY = process.env.NEWS_API_KEY;
 const newsapi = new NewsAPI(NEWS_API_KEY);
 
-// 2. O seu termo de pesquisa principal
-const SEARCH_QUERY = '"turismo Lisboa" OR "eventos Lisboa" OR "museus Lisboa"';
+// 1. QUERY DE PESQUISA MAIS ABRANGENTE
+// Usamos aspas para frases exatas e 'OR' para alternativas.
+// Adicionamos termos mais genéricos como "cultura" e "exposição" ligados a "Lisboa".
+const SEARCH_QUERY =
+    '"transporte público Lisboa" OR "greve metro" OR "greve CP" OR ' +
+    '"novo museu Lisboa" OR "exposição imersiva" OR "concerto Lisboa" OR ' +
+    '"festival Lisboa" OR "Time Out Market" OR "LX Factory eventos" OR ' +
+    '"monumentos Lisboa" OR "passeio Tejo" OR "Oceanário novidades"';
 
-// 3. Configuração do seu email (lido dos segredos do GitHub)
+// 2. FONTES DE NOTÍCIAS PORTUGUESAS RELEVANTES
+// Focar a pesquisa nestas fontes aumenta a qualidade.
+// (Obtive estes IDs a partir da documentação da News API)
+const PORTUGUESE_SOURCES = 'publico.pt, observador.pt, expresso.pt, dn.pt, jn.pt, sapo.pt, nit.pt';
+
+// 3. Configuração do email (continua igual)
 const EMAIL_CONFIG = {
     service: 'gmail',
     auth: {
@@ -19,53 +28,46 @@ const EMAIL_CONFIG = {
         pass: process.env.EMAIL_PASS
     }
 };
-
-// 4. Para onde enviar o email
 const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL;
 
 // --- FIM DA CONFIGURAÇÃO ---
 
 
 async function findRelevantNews() {
-    console.log(`Iniciando busca por notícias com a query: ${SEARCH_QUERY}`);
+    console.log(`Iniciando busca por notícias em fontes portuguesas...`);
     try {
         const response = await newsapi.v2.everything({
             q: SEARCH_QUERY,
-            language: 'pt', // Procurar por notícias em Português
-            sortBy: 'relevancy', // Ordenar por relevância
-            pageSize: 20 // Pedir os 20 artigos mais relevantes
+            sources: PORTUGUESE_SOURCES, // <-- NOVA OPÇÃO: Focar nestas fontes
+            language: 'pt',
+            sortBy: 'publishedAt', // Ordenar por mais recente para garantir que apanhamos as últimas
+            pageSize: 50 // Pedir mais artigos para aumentar a probabilidade de encontrar algo
         });
 
-        console.log(`Encontrados ${response.totalResults} resultados. A processar os mais recentes...`);
+        console.log(`API encontrou um total de ${response.totalResults} resultados. A filtrar os das últimas 24h...`);
         
-        // Filtra apenas os artigos publicados nas últimas 24 horas
         const yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
+        yesterday.setDate(yesterday.getDate() - 2); // Aumentar a janela para 48h para não perder nada
         
         const recentArticles = response.articles.filter(article => {
             const pubDate = new Date(article.publishedAt);
             return pubDate > yesterday;
         });
 
-        console.log(`Encontrados ${recentArticles.length} artigos relevantes nas últimas 24h.`);
+        console.log(`Encontrados ${recentArticles.length} artigos relevantes nas últimas 48h.`);
 
-        if (recentArticles.length > 0) {
-            await sendNewsEmail(recentArticles);
-        } else {
-            console.log('Nenhum artigo novo para reportar.');
-            // Opcional: Enviar um email de "tudo calmo"
-            await sendNewsEmail([]); 
-        }
+        // Enviar o email independentemente do resultado
+        await sendNewsEmail(recentArticles);
 
     } catch (error) {
         console.error('Erro ao comunicar com a News API:', error.message);
-        // Opcional: Enviar um email de erro para si mesmo
     }
 }
 
 async function sendNewsEmail(articles) {
     const transporter = nodemailer.createTransport(EMAIL_CONFIG);
     let emailBody;
+    const subject = `💡 ${articles.length} Novas Ideias de Artigos para Unveiled Guides`;
 
     if (articles.length > 0) {
         emailBody = `
@@ -85,15 +87,15 @@ async function sendNewsEmail(articles) {
     } else {
         emailBody = `
             <h2>Unveiled Guides - Relatório Diário</h2>
-            <p>O robô de notícias foi executado com sucesso, mas não encontrou nenhum artigo novo relevante nas últimas 24 horas.</p>
-            <p>Isto confirma que o sistema está a funcionar corretamente.</p>
+            <p>O robô de notícias foi executado com sucesso, mas não encontrou nenhum artigo novo relevante nas últimas 48 horas com base nos termos de pesquisa atuais.</p>
+            <p>Isto confirma que o sistema está a funcionar. Se continuar a não encontrar nada, podemos refinar a query de pesquisa novamente.</p>
         `;
     }
 
     const mailOptions = {
         from: `"Unveiled Guides Robot" <${EMAIL_CONFIG.auth.user}>`,
         to: RECIPIENT_EMAIL,
-        subject: `💡 ${articles.length} Ideias de Artigos para Unveiled Guides`,
+        subject: subject,
         html: emailBody
     };
 
