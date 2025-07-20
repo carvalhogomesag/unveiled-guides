@@ -2,7 +2,8 @@
 title: "The Key to Lisbon? An Honest Review of the Lisboa Card"
 layout: "post.njk"
 date: "2024-07-22"
-tags: "post"
+tags:
+  - post
   - Lisbon
   - Travel Tips
   - UNESCO
@@ -13,7 +14,6 @@ summary: "Does the Lisboa Card actually save you time and money? We break down t
 ---
 
 ![Montagem de imagens mostrando o Lisboa Card e atrações como o Mosteiro dos Jerónimos e a Torre de Belém](/images/lisboa-card-attractions.jpg)
-*(Nota: Encontre uma imagem que mostre o cartão ou uma montagem de atrações de Lisboa e nomeie-a assim)*
 
 Lisbon is a city that invites exploration. Its seven hills are dotted with world-class museums, historic monasteries, and iconic monuments. But as you plan your itinerary, a common dilemma arises: the cost of individual tickets and the time spent in queues can quickly add up, eating into your precious vacation budget and schedule.
 
