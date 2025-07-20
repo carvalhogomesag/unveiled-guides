@@ -1,108 +1,99 @@
-// Importa as bibliotecas que instalámos
-const Parser = require('rss-parser');
+// Importa a biblioteca da News API e do Nodemailer
+const NewsAPI = require('newsapi');
 const nodemailer = require('nodemailer');
 
 // --- CONFIGURAÇÃO (Altere estes valores) ---
 
-// 1. Fontes de notícias (RSS Feeds)
-const RSS_FEEDS = [
-    'https://www.timeout.pt/lisboa/pt/rss',
-    'https://www.publico.pt/api/rss/local/lisboa',
-    'https://observador.pt/feed/cultura/',
-    'https://www.jn.pt/rss/cultura-e-lazer.xml'
-];
+// 1. A sua chave da News API (será lida dos segredos do GitHub)
+const NEWS_API_KEY = process.env.NEWS_API_KEY;
+const newsapi = new NewsAPI(NEWS_API_KEY);
 
-// 2. Palavras-chave para procurar nos títulos
-const KEYWORDS = [
-    'museu', 'exposição', 'concerto', 'festival', 'festa',
-    'aeroporto', 'turismo', 'monumento', 'castelo', 'palácio', 
-    'feriado', 'grátis', 'inaugura', 'restauro', 'belém', 'sintra',
-    'alfama', 'jeronimos', 'praia',
-];
+// 2. O seu termo de pesquisa principal
+const SEARCH_QUERY = '"turismo Lisboa" OR "eventos Lisboa" OR "museus Lisboa"';
 
-// 3. Configuração do seu email (IMPORTANTE!)
-// Use um serviço como o Gmail. Você precisará de uma "App Password".
-// Veja como criar uma: https://support.google.com/accounts/answer/185833
+// 3. Configuração do seu email (lido dos segredos do GitHub)
 const EMAIL_CONFIG = {
     service: 'gmail',
     auth: {
-        user: process.env.EMAIL_USER, // Lê do segredo
-        pass: process.env.EMAIL_PASS     // Lê do segredo
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     }
 };
-const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL; // Lê do segredo   
+
+// 4. Para onde enviar o email
+const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL;
 
 // --- FIM DA CONFIGURAÇÃO ---
 
 
-// Função principal do nosso robô
 async function findRelevantNews() {
-    console.log('Iniciando busca por notícias relevantes...');
-    const parser = new Parser();
-    let relevantArticles = [];
+    console.log(`Iniciando busca por notícias com a query: ${SEARCH_QUERY}`);
+    try {
+        const response = await newsapi.v2.everything({
+            q: SEARCH_QUERY,
+            language: 'pt', // Procurar por notícias em Português
+            sortBy: 'relevancy', // Ordenar por relevância
+            pageSize: 20 // Pedir os 20 artigos mais relevantes
+        });
 
-    // Loop por cada RSS Feed
-    for (const feedUrl of RSS_FEEDS) {
-        try {
-            const feed = await parser.parseURL(feedUrl);
-            console.log(`Lendo feed: ${feed.title}`);
+        console.log(`Encontrados ${response.totalResults} resultados. A processar os mais recentes...`);
+        
+        // Filtra apenas os artigos publicados nas últimas 24 horas
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        
+        const recentArticles = response.articles.filter(article => {
+            const pubDate = new Date(article.publishedAt);
+            return pubDate > yesterday;
+        });
 
-            feed.items.forEach(item => {
-                const title = item.title.toLowerCase();
-                // Verifica se o título contém alguma das nossas palavras-chave
-                if (KEYWORDS.some(keyword => title.includes(keyword))) {
-                    // Verifica se o artigo é recente (publicado nas últimas 24h)
-                    const pubDate = new Date(item.pubDate);
-                    const yesterday = new Date();
-                    yesterday.setDate(yesterday.getDate() - 1);
+        console.log(`Encontrados ${recentArticles.length} artigos relevantes nas últimas 24h.`);
 
-                    if (pubDate > yesterday) {
-                        relevantArticles.push({
-                            title: item.title,
-                            link: item.link,
-                            source: feed.title
-                        });
-                    }
-                }
-            });
-        } catch (error) {
-            console.error(`Erro ao ler o feed ${feedUrl}:`, error.message);
+        if (recentArticles.length > 0) {
+            await sendNewsEmail(recentArticles);
+        } else {
+            console.log('Nenhum artigo novo para reportar.');
+            // Opcional: Enviar um email de "tudo calmo"
+            await sendNewsEmail([]); 
         }
-    }
 
-    console.log(`Encontrados ${relevantArticles.length} artigos relevantes.`);
-
-    // Se encontrámos artigos, envia o email
-    if (relevantArticles.length > 0) {
-        await sendNewsEmail(relevantArticles);
-    } else {
-        console.log('Nenhum artigo novo para reportar. Terminando.');
+    } catch (error) {
+        console.error('Erro ao comunicar com a News API:', error.message);
+        // Opcional: Enviar um email de erro para si mesmo
     }
 }
 
-// Função para enviar o email
 async function sendNewsEmail(articles) {
     const transporter = nodemailer.createTransport(EMAIL_CONFIG);
+    let emailBody;
 
-    // Formata a lista de artigos para o corpo do email
-    const emailBody = `
-        <h2>Unveiled Guides - Resumo de Notícias de Hoje</h2>
-        <p>Foram encontrados ${articles.length} artigos que podem ser de interesse:</p>
-        <ul>
-            ${articles.map(article => `
-                <li>
-                    <strong>${article.title}</strong><br>
-                    <em>Fonte: ${article.source}</em><br>
-                    <a href="${article.link}">Ler artigo completo</a>
-                </li>
-            `).join('')}
-        </ul>
-    `;
+    if (articles.length > 0) {
+        emailBody = `
+            <h2>Unveiled Guides - Resumo de Notícias de Hoje</h2>
+            <p>Foram encontrados ${articles.length} artigos que podem ser de interesse:</p>
+            <ul>
+                ${articles.map(article => `
+                    <li style="margin-bottom: 15px;">
+                        <strong>${article.title}</strong><br>
+                        <em>Fonte: ${article.source.name}</em><br>
+                        <p>${article.description || 'Sem descrição disponível.'}</p>
+                        <a href="${article.url}">Ler artigo completo</a>
+                    </li>
+                `).join('')}
+            </ul>
+        `;
+    } else {
+        emailBody = `
+            <h2>Unveiled Guides - Relatório Diário</h2>
+            <p>O robô de notícias foi executado com sucesso, mas não encontrou nenhum artigo novo relevante nas últimas 24 horas.</p>
+            <p>Isto confirma que o sistema está a funcionar corretamente.</p>
+        `;
+    }
 
     const mailOptions = {
         from: `"Unveiled Guides Robot" <${EMAIL_CONFIG.auth.user}>`,
         to: RECIPIENT_EMAIL,
-        subject: '💡 Ideias de Artigos para Unveiled Guides',
+        subject: `💡 ${articles.length} Ideias de Artigos para Unveiled Guides`,
         html: emailBody
     };
 
@@ -115,5 +106,4 @@ async function sendNewsEmail(articles) {
     }
 }
 
-// Executa a função principal
 findRelevantNews();

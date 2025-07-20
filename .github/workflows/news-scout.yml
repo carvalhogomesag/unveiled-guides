@@ -2,30 +2,43 @@ name: Daily News Scout
 
 on:
   schedule:
-    # Executa todos os dias às 8h da manhã (UTC)
+    # Executa todos os dias às 8h da manhã (UTC).
+    # O horário UTC é 1 hora a mais que em Portugal Continental no inverno,
+    # e igual no verão. 8h UTC é um bom meio-termo.
     - cron: '0 8 * * *'
-  workflow_dispatch: # Permite executar manualmente a partir do GitHub
+  
+  # A linha abaixo permite-nos executar este workflow manualmente
+  # a partir da aba "Actions" no GitHub. Essencial para testes.
+  workflow_dispatch:
 
 jobs:
   scout-news:
+    # O tipo de máquina virtual onde o nosso robô vai correr.
+    # 'ubuntu-latest' é o padrão e o mais recomendado.
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out repository
-      uses: actions/checkout@v3
+      # Passo 1: Descarrega o nosso código do repositório para a máquina virtual.
+      - name: Check out repository
+        uses: actions/checkout@v4 # Usar a versão mais recente da action
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      # Passo 2: Configura o ambiente Node.js.
+      - name: Set up Node.js
+        uses: actions/setup-node@v4 # Usar a versão mais recente da action
+        with:
+          node-version: '20' # Usar uma versão LTS (Long Term Support) do Node.js
 
-    - name: Install dependencies
-      run: npm install
+      # Passo 3: Instala as dependências do nosso projeto (rss-parser, nodemailer, etc.).
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run News Scout script
-      run: node scripts/news-scout.js
-      env:
-        # Passar os segredos para o script
-        EMAIL_USER: ${{ secrets.EMAIL_USER }}
-        EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
-        RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+      # Passo 4: Executa o nosso script do robô.
+      - name: Run News Scout script
+        run: node scripts/news-scout.js
+        # A secção 'env' é onde passamos os nossos "secrets" guardados no GitHub
+        # para o nosso script como variáveis de ambiente.
+        env:
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
