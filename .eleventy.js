@@ -1,10 +1,8 @@
-// Importa o plugin RSS que nos dá filtros de data
+// Importa o plugin RSS
 const pluginRss = require("@11ty/eleventy-plugin-rss");
-
-// Importa o módulo URL do Node para o filtro de URL absoluto
+// Importa o módulo URL do Node
 const { URL } = require("url");
-
-// Importa o pacote slugify para criar URLs amigáveis a partir das tags
+// Importa o pacote slugify
 const slugify = require("slugify");
 
 module.exports = function(eleventyConfig) {
@@ -12,22 +10,9 @@ module.exports = function(eleventyConfig) {
   // --- PLUGINS ---
   eleventyConfig.addPlugin(pluginRss);
 
-  // --- PASSTHROUGH (Copiar ficheiros/pastas para o site final) ---
-  // Copia as nossas pastas principais de assets.
-  eleventyConfig.addPassthroughCopy("public/css");
-  eleventyConfig.addPassthroughCopy("public/js");
-  eleventyConfig.addPassthroughCopy("public/images");
-  
-  // ** AQUI ESTÁ A CORREÇÃO EXPLÍCITA E FINAL **
-  // Copia cada ficheiro de favicon individualmente da pasta public para a raiz do site.
-  eleventyConfig.addPassthroughCopy({ "public/apple-touch-icon.png": "/apple-touch-icon.png" });
-  eleventyConfig.addPassthroughCopy({ "public/favicon-16x16.png": "/favicon-16x16.png" });
-  eleventyConfig.addPassthroughCopy({ "public/favicon-32x32.png": "/favicon-32x32.png" });
-  eleventyConfig.addPassthroughCopy({ "public/favicon.ico": "/favicon.ico" });
-  eleventyConfig.addPassthroughCopy({ "public/favicon.svg": "/favicon.svg" });
-  eleventyConfig.addPassthroughCopy({ "public/site.webmanifest": "/site.webmanifest" });
-  // Adicione aqui qualquer outro ficheiro de favicon que tenha na pasta public.
-
+  // --- PASSTHROUGH (A CORREÇÃO FINAL) ---
+  // Copia o CONTEÚDO da pasta 'public' para a raiz ('/') do site final.
+  eleventyConfig.addPassthroughCopy({ "public/": "/" });
 
   // --- FILTROS DE TEMPLATE ---
   eleventyConfig.addFilter("readableDate", dateObj => new Date(dateObj).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
@@ -35,11 +20,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("absoluteUrl", (url, base) => new URL(url, base).toString());
   eleventyConfig.addFilter("url_encode", (str) => encodeURIComponent(str));
   eleventyConfig.addFilter("slugify", function(str) {
-      return slugify(str, {
-          lower: true,
-          strict: true,
-          remove: /["]/g,
-      });
+      return slugify(str, { lower: true, strict: true, remove: /["]/g });
   });
 
   // --- COLEÇÕES PERSONALIZADAS ---
