@@ -1,0 +1,31 @@
+name: Daily News Scout
+
+on:
+  schedule:
+    # Executa todos os dias às 8h da manhã (UTC)
+    - cron: '0 8 * * *'
+  workflow_dispatch: # Permite executar manualmente a partir do GitHub
+
+jobs:
+  scout-news:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run News Scout script
+      run: node scripts/news-scout.js
+      env:
+        # Passar os segredos para o script
+        EMAIL_USER: ${{ secrets.EMAIL_USER }}
+        EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+        RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
