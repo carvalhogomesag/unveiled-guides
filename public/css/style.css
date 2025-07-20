@@ -53,7 +53,7 @@ a:hover {
 }
 
 .logo-link {
-    z-index: 9999; /* Garante que o logo fica sempre visível */
+    z-index: 9999;
 }
 
 .site-logo {
@@ -68,7 +68,7 @@ a:hover {
 
 /* BOTÃO HAMBÚRGUER */
 .mobile-nav-toggle {
-    display: none; /* Escondido em Desktop */
+    display: none;
     background: transparent;
     border: 0;
     padding: 0.5rem;
@@ -102,37 +102,34 @@ a:hover {
     text-decoration: none;
 }
 
-/* --- MEDIA QUERY PARA MOBILE (A PARTE IMPORTANTE) --- */
+/* --- MEDIA QUERY PARA MOBILE --- */
 @media (max-width: 900px) {
     .mobile-nav-toggle {
-        display: block; /* Mostra o botão */
+        display: block;
     }
 
     .main-nav-wrapper {
-        /* Oculta o contentor de navegação em mobile */
-        display: none;
+        display: none; /* Esconde a navegação de desktop */
     }
     
     .main-nav {
-        /* Posição inicial: fora da tela, à direita */
         position: fixed;
-        inset: 0 0 0 30%; /* Do topo à base, da direita até 30% da esquerda */
+        inset: 0 0 0 30%;
         
-        /* Layout e Estilo */
         flex-direction: column;
         padding: min(20vh, 10rem) 2em;
         gap: 2rem;
-        background: hsl(0 0% 100% / 0.1);
-        backdrop-filter: blur(1.5rem);
-        -webkit-backdrop-filter: blur(1.5rem);
+        align-items: flex-start;
         
-        /* Animação */
+        background: hsl(0 0% 100% / 0.8);
+        backdrop-filter: blur(1rem);
+        -webkit-backdrop-filter: blur(1rem);
+        
         transform: translateX(100%);
         transition: transform 350ms ease-out;
         z-index: 1000;
     }
     
-    /* Quando o menu está VISÍVEL */
     .main-nav[data-visible="true"] {
         transform: translateX(0%);
     }
@@ -145,7 +142,7 @@ a:hover {
     .mobile-nav-toggle[aria-expanded="true"] .icon-close { display: block; }
 
     body.body--nav-open {
-        overflow: hidden; /* Impede o scroll */
+        overflow: hidden;
     }
 }
 
