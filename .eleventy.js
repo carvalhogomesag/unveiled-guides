@@ -7,14 +7,16 @@ const { URL } = require("url");
 module.exports = function(eleventyConfig) {
   
   // --- PLUGINS ---
+  // Adiciona funcionalidades extras, como filtros de data.
   eleventyConfig.addPlugin(pluginRss);
 
   // --- PASSTHROUGH (Copiar ficheiros/pastas para o site final) ---
+  // Diz ao Eleventy para copiar estas pastas e ficheiros diretamente para o output.
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("js");
   
-  // Copia os ficheiros de favicon da raiz para o output
+  // Copia os ficheiros de favicon da raiz para o output.
   eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
   eleventyConfig.addPassthroughCopy("favicon-16x16.png");
@@ -24,6 +26,7 @@ module.exports = function(eleventyConfig) {
 
 
   // --- FILTROS DE TEMPLATE ---
+  // Permitem-nos transformar dados nos nossos ficheiros de template.
 
   // Filtro para formatar datas num formato legível (ex: July 20, 2024)
   eleventyConfig.addFilter("readableDate", dateObj => {
@@ -45,8 +48,14 @@ module.exports = function(eleventyConfig) {
     }
   });
 
+  // Filtro para codificar strings para URLs, usado nos botões de partilha
+  eleventyConfig.addFilter("url_encode", (str) => {
+    return encodeURIComponent(str);
+  });
+
 
   // --- CONFIGURAÇÃO PRINCIPAL DO ELEVENTY ---
+  // Define as pastas de entrada, output, e os motores de template a usar.
   return {
     dir: {
       input: ".",
