@@ -65,6 +65,29 @@ module.exports = function(eleventyConfig) {
       });
   });
 
+  // --- COLEÇÕES PERSONALIZADAS ---
+  // Cria coleções de dados que podemos usar nos nossos templates.
+  eleventyConfig.addCollection("navTags", function(collectionApi) {
+      let tagSet = new Set();
+      collectionApi.getAll().forEach(item => {
+          if ("tags" in item.data) {
+              let tags = item.data.tags;
+              if (typeof tags === "string") { tags = [tags]; }
+              
+              // AQUI DEFINIMOS AS TAGS QUE APARECEM NO MENU PRINCIPAL
+              const navTags = ["Lisbon", "Sintra", "History", "Palaces", "Travel Tips", "Family", "Boat Trips", "Architecture", "UNESCO"];
+              
+              tags.forEach(tag => {
+                  if (navTags.includes(tag)) {
+                      tagSet.add(tag);
+                  }
+              });
+          }
+      });
+      // Retorna um array ordenado de tags para o menu
+      return [...tagSet].sort((a, b) => a.localeCompare(b));
+  });
+
 
   // --- CONFIGURAÇÃO PRINCIPAL DO ELEVENTY ---
   // Define as pastas de entrada, output, e os motores de template a usar.

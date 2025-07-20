@@ -15,7 +15,7 @@ body {
     font-family: var(--body-font);
     line-height: 1.7;
     color: var(--dark-text);
-    background: #fdfdfd; /* Fundo branco ligeiramente quebrado em todo o site */
+    background: #fdfdfd;
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
@@ -24,7 +24,7 @@ body {
 main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 3rem 1.5rem; /* Espaçamento para o conteúdo principal */
+    padding: 3rem 1.5rem;
 }
 
 a {
@@ -48,44 +48,86 @@ a:hover {
     font-weight: 700;
 }
 
-/* --- BLOCO DE CABEÇALHO UNIFICADO --- */
-.header-block {
-    background-color: white;
-    padding: 2rem 1.5rem 3rem 1.5rem;
-    text-align: center;
+/* --- CABEÇALHO PRINCIPAL E NAVEGAÇÃO (NOVA ESTRUTURA) --- */
+.main-header {
+    background: white;
     border-bottom: 1px solid var(--border-color);
+    position: sticky; /* Efeito "colado" no topo */
+    top: 0;
+    z-index: 100; /* Garante que fica acima do resto do conteúdo */
 }
 
-header {
+.header-content {
+    display: flex;
+    justify-content: center; /* Centraliza o logo por agora */
+    align-items: center;
+    padding: 1.5rem 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0;
 }
 
 .logo-link {
-    display: inline-block;
-    margin-bottom: 1rem;
+    margin: 0;
 }
 
-nav {
-    margin-top: 0;
+/* A NOSSA NOVA BARRA DE NAVEGAÇÃO */
+.main-nav {
+    border-top: 1px solid var(--border-color);
+    background-color: #fafafa;
 }
 
-nav a {
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que os itens quebrem linha em ecrãs pequenos */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-nav a {
+    display: block;
+    padding: 1rem 1.5rem;
     font-family: var(--display-font);
     font-weight: 700;
     color: var(--dark-text);
-    margin: 0 1rem;
-    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.main-nav a::after { /* Linha subtil que aparece no hover */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 3px;
+    background-color: var(--primary-blue);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.main-nav a:hover::after {
+    transform: scaleX(1);
 }
 
 /* --- SECÇÃO HERO (TOPO DA HOME) --- */
 .hero-section {
     max-width: 800px;
     margin: 0 auto;
-    padding: 3rem 1rem 0 1rem;
+    padding: 4rem 1rem 3rem 1rem; /* Adicionar mais espaço no topo */
+    text-align: center;
 }
 
 .hero-section h2 {
@@ -100,7 +142,6 @@ nav a {
     font-size: 1.2rem;
     color: #4b5563;
 }
-
 
 /* --- GRELHA DE CARDS (HOME) --- */
 .guides-grid {
@@ -188,14 +229,14 @@ a.card-link:hover .card-image {
 /* --- LAYOUT DE ARTIGO EM COLUNAS --- */
 .article-layout {
     display: grid;
-    grid-template-columns: 1fr; /* Por defeito, uma coluna para telemóveis */
+    grid-template-columns: 1fr;
     gap: 3rem;
     align-items: flex-start;
 }
 
-@media (min-width: 992px) { /* A magia acontece em ecrãs maiores */
+@media (min-width: 992px) {
     .article-layout {
-        grid-template-columns: 2.5fr 1fr; /* Coluna principal ligeiramente maior */
+        grid-template-columns: 2.5fr 1fr;
     }
 }
 
@@ -215,7 +256,7 @@ a.card-link:hover .card-image {
 
 .article-title {
     font-family: var(--display-font);
-    font-size: clamp(2rem, 5vw, 3.5rem); /* Tamanho de fonte responsivo */
+    font-size: clamp(2rem, 5vw, 3.5rem);
     line-height: 1.1;
     color: var(--dark-text);
     margin: 0 0 1.5rem 0;
@@ -254,9 +295,12 @@ a.card-link:hover .card-image {
     line-height: 32px;
     text-align: center;
     margin-left: 8px;
-    font-size: 0.8rem;
-    font-weight: bold;
     transition: all 0.2s ease;
+}
+.share-buttons svg {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
 }
 .share-buttons a:hover {
     background-color: var(--primary-blue);
@@ -291,7 +335,7 @@ a.card-link:hover .card-image {
 
 .sidebar-widget-sticky {
     position: sticky;
-    top: 2rem;
+    top: 140px; /* Ajustado para a altura do novo header sticky */
     background: var(--light-gray-bg);
     padding: 1.5rem;
     border-radius: 12px;
@@ -304,7 +348,7 @@ a.card-link:hover .card-image {
     color: var(--dark-text);
 }
 
-/* --- ESTILOS DAS TAGS NO ARTIGO (NOVA SECÇÃO) --- */
+/* --- ESTILOS DAS TAGS NO ARTIGO --- */
 .article-tags {
     margin-top: 3rem;
     padding-top: 1.5rem;
@@ -331,7 +375,7 @@ a.card-link:hover .card-image {
     background: var(--light-gray-bg);
     color: var(--dark-text);
     padding: 0.5rem 1rem;
-    border-radius: 50px; /* Pílulas */
+    border-radius: 50px;
     font-size: 0.9rem;
     font-weight: 600;
     transition: all 0.2s ease;
@@ -342,7 +386,7 @@ a.card-link:hover .card-image {
     text-decoration: none;
 }
 
-/* --- ESTILOS DA PÁGINA DE TAGS (NOVA SECÇÃO) --- */
+/* --- ESTILOS DA PÁGINA DE TAGS --- */
 .tag-header {
     text-align: center;
     padding: 2rem 1rem;

@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YQ6WR6XMCC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-YQ6WR6XMCC');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} | Unveiled Guides</title>
@@ -34,14 +25,23 @@
 
     <!-- GetYourGuide Analytics -->
     <script async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id="PMW7G72"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> <!-- Lembre-se de colocar o seu ID real aqui -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX'); // E aqui também
+    </script>
 </head>
 <body>
     <div class="top-bar">
         Your essential guides to Portugal's history & culture ✨
     </div>
 
-    <div class="header-block">
-        <header>
+    <header class="main-header">
+        <div class="header-content">
             <a href="/" class="logo-link">
                 <svg class="site-logo" width="230" height="40" viewBox="0 0 230 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <title>Unveiled Guides Logo</title>
@@ -51,18 +51,26 @@
                     <text x="50" y="27" font-family="var(--display-font)" font-size="24" font-weight="700" fill="var(--dark-text)">Unveiled Guides</text>
                 </svg>
             </a>
-            <nav>
-                <a href="/">Home</a>
-            </nav>
-        </header>
-
-        {% if page.url == '/' %}
-        <div class="hero-section">
-            <h2>Discover the Stories Behind the Sights</h2>
-            <p>We provide in-depth guides to help you understand the rich history of Portugal's landmarks, transforming your visit from a simple photo-op into an unforgettable experience.</p>
+            <!-- Futuramente podemos adicionar aqui ícones de redes sociais ou o campo de pesquisa -->
         </div>
-        {% endif %}
+        <nav class="main-nav">
+            <ul>
+                {# Este loop constrói o nosso menu dinamicamente a partir das tags que definimos #}
+                {% for tag in collections.navTags %}
+                <li>
+                    <a href="/tags/{{ tag | slugify }}/">{{ tag }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </header>
+
+    {% if page.url == '/' %}
+    <div class="hero-section">
+        <h2>Discover the Stories Behind the Sights</h2>
+        <p>We provide in-depth guides to help you understand the rich history of Portugal's landmarks, transforming your visit from a simple photo-op into an unforgettable experience.</p>
     </div>
+    {% endif %}
 
     <main>
         {{ content | safe }}
@@ -72,7 +80,5 @@
         <p>© 2024 Unveiled Guides. All rights reserved. Your adventure starts here.</p>
     </footer>
 
-    <!-- Nosso script de pesquisa (se aplicável no futuro) -->
-    <!-- <script src="/js/search.js" defer></script> -->
 </body>
 </html>
