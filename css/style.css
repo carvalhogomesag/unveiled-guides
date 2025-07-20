@@ -9,8 +9,8 @@
     --border-color: #e5e7eb;
     --display-font: 'Poppins', sans-serif;
     --body-font: 'Source Serif 4', serif;
-    --brand-font: 'Cinzel', serif; /* NOSSA NOVA FONTE DE MARCA */
-    --sans-serif-font: 'Poppins', sans-serif; /* Usar Poppins para textos de UI */
+    --brand-font: 'Cinzel', serif;
+    --sans-serif-font: 'Poppins', sans-serif;
 }
 
 body {
@@ -26,7 +26,7 @@ body {
 main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 3rem 1.5rem;
+    padding: 2rem 1rem; /* Padding reduzido para mobile */
 }
 
 a {
@@ -39,7 +39,7 @@ a:hover {
     color: var(--accent-teal);
 }
 
-/* --- NOVO CABEÇALHO COMPACTO --- */
+/* --- CABEÇALHO COMPACTO E RESPONSIVO --- */
 .site-header {
     background: white;
     border-bottom: 1px solid var(--border-color);
@@ -53,7 +53,13 @@ a:hover {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 1rem; /* Padding reduzido para mobile */
+}
+
+.site-logo {
+    width: 100%; /* Faz o logo adaptar-se */
+    max-width: 400px; /* Mas não passar do seu tamanho máximo */
+    height: auto;
 }
 
 .site-logo text[font-family="Cinzel, serif"] {
@@ -63,7 +69,18 @@ a:hover {
     font-family: var(--sans-serif-font);
 }
 
-/* A NOSSA BARRA DE NAVEGAÇÃO PRINCIPAL */
+/* Esconder o subtítulo do logo em telas muito pequenas */
+@media (max-width: 480px) {
+    .site-logo .logo-text text:last-child {
+        display: none;
+    }
+    .site-logo {
+        max-width: 280px;
+    }
+}
+
+
+/* BARRA DE NAVEGAÇÃO PRINCIPAL */
 .main-nav {
     border-top: 1px solid var(--border-color);
     background-color: #fafafa;
@@ -83,13 +100,13 @@ a:hover {
 
 .main-nav a {
     display: block;
-    padding: 1rem 1.5rem;
+    padding: 0.75rem 1rem; /* Padding reduzido para mobile */
     font-family: var(--display-font);
     font-weight: 700;
     color: var(--dark-text);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    font-size: 0.9rem;
+    font-size: 0.8rem; /* Fonte ligeiramente menor */
     position: relative;
     transition: color 0.2s ease;
 }
@@ -103,8 +120,8 @@ a:hover {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 1.5rem;
-    right: 1.5rem;
+    left: 1rem;
+    right: 1rem;
     height: 3px;
     background-color: var(--primary-blue);
     transform: scaleX(0);
@@ -119,28 +136,35 @@ a:hover {
 .hero-section {
     max-width: 800px;
     margin: 0 auto;
-    padding: 4rem 1rem 3rem 1rem;
+    padding: 2rem 1rem; /* Padding reduzido para mobile */
     text-align: center;
 }
 
 .hero-section h2 {
     font-family: var(--display-font);
-    font-size: 3rem;
+    font-size: clamp(2rem, 8vw, 3rem); /* Título fluido e responsivo */
     line-height: 1.2;
     color: var(--primary-blue);
     margin-bottom: 1rem;
 }
 
 .hero-section p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #4b5563;
 }
 
 /* --- GRELHA DE CARDS (HOME) --- */
 .guides-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: 1fr; /* Uma coluna por defeito para mobile */
+    gap: 2rem;
+}
+
+/* Media Query para ecrãs maiores */
+@media (min-width: 600px) {
+    .guides-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
 }
 
 a.card-link {
@@ -223,21 +247,28 @@ a.card-link:hover .card-image {
 .article-layout {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
     align-items: flex-start;
 }
 
 @media (min-width: 992px) {
     .article-layout {
         grid-template-columns: 2.5fr 1fr;
+        gap: 3rem;
     }
 }
 
 .article-main-content {
     background: white;
-    padding: 2rem 3rem;
+    padding: 1.5rem; /* Padding reduzido para mobile */
     border-radius: 12px;
     box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+}
+
+@media (min-width: 768px) {
+    .article-main-content {
+        padding: 2rem 3rem; /* Padding maior para ecrãs maiores */
+    }
 }
 
 /* --- CABEÇALHO DO ARTIGO --- */
@@ -249,7 +280,7 @@ a.card-link:hover .card-image {
 
 .article-title {
     font-family: var(--display-font);
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(2rem, 7vw, 3.5rem); /* Título fluido e responsivo */
     line-height: 1.1;
     color: var(--dark-text);
     margin: 0 0 1.5rem 0;
@@ -326,18 +357,18 @@ a.card-link:hover .card-image {
 }
 
 .sidebar-widget-sticky {
-    position: sticky;
-    top: 130px; /* Ajustado para a altura do novo header sticky */
+    position: static; /* Desligar o 'sticky' em mobile por defeito */
+    top: auto;
     background: var(--light-gray-bg);
     padding: 1.5rem;
     border-radius: 12px;
 }
 
-.sidebar-widget-sticky h4 {
-    font-family: var(--display-font);
-    margin-top: 0;
-    margin-bottom: 1rem;
-    color: var(--dark-text);
+@media (min-width: 992px) {
+    .sidebar-widget-sticky {
+        position: sticky; /* Ligar o 'sticky' apenas em ecrãs de desktop */
+        top: 130px;
+    }
 }
 
 /* --- ESTILOS DAS TAGS NO ARTIGO --- */
