@@ -8,6 +8,7 @@ module.exports = {
         { text: "Family", url: "/tags/family/" },
         { text: "Boat Trips", url: "/tags/boat-trips/" },
         { text: "Architecture", url: "/tags/architecture/" },
-        { text: "UNESCO", url: "/tags/unesco/" }
+        { text: "UNESCO", url: "/tags/unesco/" },
+        { text: "News", url: "/news/" } // <-- NOVO LINK ADICIONADO AQUI
     ]
 };

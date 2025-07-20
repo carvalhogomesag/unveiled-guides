@@ -1,0 +1,27 @@
+---
+title: "Latest News for Lisbon Visitors"
+layout: "base.njk"
+---
+
+<div class="tag-header">
+    <h1>Latest News & Updates</h1>
+    <p style="font-size: 1.1rem; max-width: 600px; margin: 1rem auto;">Timely information for travelers planning a trip to Lisbon and Portugal.</p>
+</div>
+
+<div class="guides-grid">
+    {% set newslist = collections.news | reverse %}
+    {% for post in newslist %}
+        <a href="{{ post.url }}" class="card-link">
+            <article class="card">
+                <div class="card-image-wrapper">
+                    <img src="{{ post.data.featuredImage }}" alt="{{ post.data.title }}" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">{{ post.data.title }}</h3>
+                    <p class="card-summary">{{ post.data.summary }}</p>
+                    <span class="card-read-more">Read More →</span>
+                </div>
+            </article>
+        </a>
+    {% endfor %}
+</div>
