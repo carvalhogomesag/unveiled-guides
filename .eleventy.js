@@ -14,9 +14,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
 
   // --- PASSTHROUGH (Copiar ficheiros/pastas para o site final) ---
-  // Diz ao Eleventy para copiar o CONTEÚDO da pasta 'public' para a raiz do site final.
-  // Esta é agora a nossa única regra para todos os assets (CSS, JS, Imagens, Favicons).
-  eleventyConfig.addPassthroughCopy("public");
+  // ** AQUI ESTÁ A CORREÇÃO **
+  // Copia o CONTEÚDO da pasta 'public' para a raiz ('/') do site final.
+  eleventyConfig.addPassthroughCopy({ "public": "/" });
 
 
   // --- FILTROS DE TEMPLATE ---
