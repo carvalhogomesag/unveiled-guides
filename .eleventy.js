@@ -14,18 +14,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
 
   // --- PASSTHROUGH (Copiar ficheiros/pastas para o site final) ---
-  // Diz ao Eleventy para copiar estas pastas e ficheiros diretamente para o output.
-  eleventyConfig.addPassthroughCopy("css");
-  eleventyConfig.addPassthroughCopy("images");
-  eleventyConfig.addPassthroughCopy("js");
-  
-  // Copia os ficheiros de favicon da raiz para o output.
-  eleventyConfig.addPassthroughCopy("favicon.ico");
-  eleventyConfig.addPassthroughCopy("apple-touch-icon.png");
-  eleventyConfig.addPassthroughCopy("favicon-16x16.png");
-  eleventyConfig.addPassthroughCopy("favicon-32x32.png");
-  eleventyConfig.addPassthroughCopy("site.webmanifest");
-  eleventyConfig.addPassthroughCopy("favicon.svg");
+  // Diz ao Eleventy para copiar o CONTEÚDO da pasta 'public' para a raiz do site final.
+  // Esta é agora a nossa única regra para todos os assets (CSS, JS, Imagens, Favicons).
+  eleventyConfig.addPassthroughCopy("public");
 
 
   // --- FILTROS DE TEMPLATE ---

@@ -52,6 +52,10 @@ a:hover {
     padding: 1rem;
 }
 
+.logo-link {
+    z-index: 1001; /* Garante que o logo fica acima do menu mobile */
+}
+
 .site-logo {
     width: 100%;
     max-width: 280px;
@@ -69,12 +73,12 @@ a:hover {
     border: 0;
     padding: 0.5rem;
     cursor: pointer;
-    z-index: 9999;
+    z-index: 9999; /* Garante que o botão fica acima de tudo */
 }
 .mobile-nav-toggle .icon-close { display: none; }
 
 /* NAVEGAÇÃO PRINCIPAL */
-.main-nav ul {
+.main-nav {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -94,46 +98,34 @@ a:hover {
     position: relative;
 }
 
-.main-nav a:hover {
-    color: var(--primary-blue);
-    text-decoration: none;
-}
-
 /* --- MEDIA QUERY PARA MOBILE --- */
 @media (max-width: 850px) {
     .mobile-nav-toggle {
-        display: block; /* Mostra o botão hambúrguer */
+        display: block;
     }
 
     .main-nav-wrapper {
-        /* Posição inicial: fora da tela, à direita */
         position: fixed;
-        inset: 0 0 0 30%; /* Do topo à base, da direita até 30% da esquerda */
+        inset: 0 0 0 30%;
+        background: hsl(0 0% 100% / 0.8);
+        backdrop-filter: blur(1rem);
+        -webkit-backdrop-filter: blur(1rem);
         
-        /* Efeito de vidro fosco */
-        background: hsl(0 0% 100% / 0.1);
-        backdrop-filter: blur(1.5rem);
-        -webkit-backdrop-filter: blur(1.5rem);
-
-        /* Animação */
         transform: translateX(100%);
         transition: transform 350ms ease-out;
         z-index: 1000;
+        
+        padding: min(20vh, 10rem) 2em;
     }
     
-    /* ESTA É A REGRA-CHAVE QUE ESTAVA A FALTAR OU INCORRETA */
-    /* Quando o wrapper tem o atributo data-visible="true", ele volta para a tela */
     .main-nav-wrapper[data-visible="true"] {
         transform: translateX(0%);
     }
 
-    /* Esconder a navegação desktop */
-    .site-header .main-nav {
-        display: flex; /* Garante que o UL está visível dentro do wrapper */
+    .main-nav {
         flex-direction: column;
-        padding: min(20vh, 10rem) 2em;
         gap: 2rem;
-        align-items: flex-start; /* Alinha os itens à esquerda */
+        align-items: flex-start;
     }
     
     .main-nav a {
@@ -144,7 +136,7 @@ a:hover {
     .mobile-nav-toggle[aria-expanded="true"] .icon-close { display: block; }
 
     body.body--nav-open {
-        overflow: hidden; /* Impede o scroll do conteúdo principal */
+        overflow: hidden;
     }
 }
 
