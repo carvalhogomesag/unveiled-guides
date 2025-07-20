@@ -10,7 +10,7 @@ module.exports = function(eleventyConfig) {
   // --- PLUGINS ---
   eleventyConfig.addPlugin(pluginRss);
 
-  // --- PASSTHROUGH (A CORREÇÃO FINAL) ---
+  // --- PASSTHROUGH ---
   // Copia o CONTEÚDO da pasta 'public' para a raiz ('/') do site final.
   eleventyConfig.addPassthroughCopy({ "public/": "/" });
 
@@ -21,24 +21,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("url_encode", (str) => encodeURIComponent(str));
   eleventyConfig.addFilter("slugify", function(str) {
       return slugify(str, { lower: true, strict: true, remove: /["]/g });
-  });
-
-  // --- COLEÇÕES PERSONALIZADAS ---
-  eleventyConfig.addCollection("navTags", function(collectionApi) {
-      let tagSet = new Set();
-      collectionApi.getAll().forEach(item => {
-          if ("tags" in item.data) {
-              let tags = item.data.tags;
-              if (typeof tags === "string") { tags = [tags]; }
-              const navTags = ["Lisbon", "Sintra", "History", "Palaces", "Travel Tips", "Family", "Boat Trips", "Architecture", "UNESCO"];
-              tags.forEach(tag => {
-                  if (navTags.includes(tag)) {
-                      tagSet.add(tag);
-                  }
-              });
-          }
-      });
-      return [...tagSet].sort((a, b) => a.localeCompare(b));
   });
 
   // --- CONFIGURAÇÃO PRINCIPAL DO ELEVENTY ---
