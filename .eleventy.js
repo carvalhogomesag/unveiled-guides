@@ -4,6 +4,9 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 // Importa o módulo URL do Node para o filtro de URL absoluto
 const { URL } = require("url");
 
+// Importa o pacote slugify para criar URLs amigáveis a partir das tags
+const slugify = require("slugify");
+
 module.exports = function(eleventyConfig) {
   
   // --- PLUGINS ---
@@ -51,6 +54,15 @@ module.exports = function(eleventyConfig) {
   // Filtro para codificar strings para URLs, usado nos botões de partilha
   eleventyConfig.addFilter("url_encode", (str) => {
     return encodeURIComponent(str);
+  });
+
+  // Filtro para criar "slugs" a partir de strings (ex: "Travel Tips" -> "travel-tips")
+  eleventyConfig.addFilter("slugify", function(str) {
+      return slugify(str, {
+          lower: true,
+          strict: true,
+          remove: /["]/g,
+      });
   });
 
 

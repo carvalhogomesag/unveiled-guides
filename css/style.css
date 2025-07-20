@@ -101,6 +101,7 @@ nav a {
     color: #4b5563;
 }
 
+
 /* --- GRELHA DE CARDS (HOME) --- */
 .guides-grid {
     display: grid;
@@ -184,7 +185,7 @@ a.card-link:hover .card-image {
     color: var(--accent-teal);
 }
 
-/* --- LAYOUT DE ARTIGO EM COLUNAS (NOVA SECÇÃO) --- */
+/* --- LAYOUT DE ARTIGO EM COLUNAS --- */
 .article-layout {
     display: grid;
     grid-template-columns: 1fr; /* Por defeito, uma coluna para telemóveis */
@@ -301,6 +302,59 @@ a.card-link:hover .card-image {
     margin-top: 0;
     margin-bottom: 1rem;
     color: var(--dark-text);
+}
+
+/* --- ESTILOS DAS TAGS NO ARTIGO (NOVA SECÇÃO) --- */
+.article-tags {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+.article-tags h4 {
+    font-family: var(--display-font);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #9ca3af;
+    margin-bottom: 1rem;
+}
+.article-tags ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+.article-tags a {
+    display: inline-block;
+    background: var(--light-gray-bg);
+    color: var(--dark-text);
+    padding: 0.5rem 1rem;
+    border-radius: 50px; /* Pílulas */
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.article-tags a:hover {
+    background: var(--primary-blue);
+    color: white;
+    text-decoration: none;
+}
+
+/* --- ESTILOS DA PÁGINA DE TAGS (NOVA SECÇÃO) --- */
+.tag-header {
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-bottom: 3rem;
+}
+.tag-header h1 {
+    font-family: var(--display-font);
+    font-size: 2.5rem;
+    color: var(--dark-text);
+}
+.tag-header h1 span {
+    color: var(--primary-blue);
 }
 
 /* --- RODAPÉ --- */

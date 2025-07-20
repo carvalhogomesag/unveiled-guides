@@ -2,7 +2,10 @@
 title: "Landing in Lisbon: A Local's Guide to Navigating the Airport Arrival"
 layout: "post.njk"
 date: "2024-07-20"
-tags: "post"
+tags:
+  - post
+  - Lisbon
+  - Travel Tips
 templateEngineOverride: md, njk
 featuredImage: "/images/lisbon-airport-arrival.jpg"
 summary: "You've landed in Lisbon, now what? We break down the real pros and cons of taxis, ride-sharing, and public transport from the airport, and reveal the one option seasoned travelers prefer."

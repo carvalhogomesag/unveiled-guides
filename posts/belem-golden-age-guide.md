@@ -2,7 +2,12 @@
 title: "The Church Built on Spice & Gold: An Insider's Guide to Belém"
 layout: "post.njk"
 date: "2024-07-20"
-tags: "post"
+tags:
+  - post
+  - Lisbon
+  - History
+  - Architecture
+  - UNESCO
 templateEngineOverride: md, njk
 featuredImage: "/images/jeronimos-cloister-hero.jpg"
 summary: "Explore the heart of Portugal's Golden Age. Understand why Jerónimos Monastery was built with the profits of spices and how this riverside district tells a story of global discovery."

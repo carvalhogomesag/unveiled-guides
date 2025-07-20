@@ -2,7 +2,11 @@
 title: "Beyond the Glass: A Guide to Lisbon's World-Class Oceanarium"
 layout: "post.njk"
 date: "2024-07-20"
-tags: "post"
+tags:
+  - post
+  - Lisbon
+  - Family
+  - Architecture
 templateEngineOverride: md, njk
 featuredImage: "/images/lisbon-oceanarium-main.jpg"
 summary: "Dive into one of the world's most impressive aquariums. Learn about the unique 'one ocean' concept and the story behind its incredible design before your visit to Lisbon's Oceanário."

@@ -36,7 +36,22 @@ layout: "base.njk"
         <div class="article-body">
             {{ content | safe }}
         </div>
-    </div>
+
+        <!-- Bloco de Tags (NOVA SECÇÃO) -->
+        <footer class="article-tags">
+            <h4>Tagged In:</h4>
+            <ul>
+                {% for tag in tags %}
+                    {# Apenas mostrar tags que não sejam a tag 'post' de sistema #}
+                    {% if tag != 'post' %}
+                    <li>
+                        <a href="/tags/{{ tag | slugify }}/">{{ tag }}</a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </footer>
+    </div> <!-- Fim de .article-main-content -->
 
     <aside class="article-sidebar">
         <div class="sidebar-widget-sticky">
