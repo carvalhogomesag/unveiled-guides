@@ -10,44 +10,30 @@ const slugify = require("slugify");
 module.exports = function(eleventyConfig) {
   
   // --- PLUGINS ---
-  // Adiciona funcionalidades extras, como filtros de data.
   eleventyConfig.addPlugin(pluginRss);
 
   // --- PASSTHROUGH (Copiar ficheiros/pastas para o site final) ---
-  // ** AQUI ESTÁ A CORREÇÃO **
-  // Copia o CONTEÚDO da pasta 'public' para a raiz ('/') do site final.
-  eleventyConfig.addPassthroughCopy({ "public": "/" });
+  // Copia as nossas pastas principais de assets.
+  eleventyConfig.addPassthroughCopy("public/css");
+  eleventyConfig.addPassthroughCopy("public/js");
+  eleventyConfig.addPassthroughCopy("public/images");
+  
+  // ** AQUI ESTÁ A CORREÇÃO EXPLÍCITA E FINAL **
+  // Copia cada ficheiro de favicon individualmente da pasta public para a raiz do site.
+  eleventyConfig.addPassthroughCopy({ "public/apple-touch-icon.png": "/apple-touch-icon.png" });
+  eleventyConfig.addPassthroughCopy({ "public/favicon-16x16.png": "/favicon-16x16.png" });
+  eleventyConfig.addPassthroughCopy({ "public/favicon-32x32.png": "/favicon-32x32.png" });
+  eleventyConfig.addPassthroughCopy({ "public/favicon.ico": "/favicon.ico" });
+  eleventyConfig.addPassthroughCopy({ "public/favicon.svg": "/favicon.svg" });
+  eleventyConfig.addPassthroughCopy({ "public/site.webmanifest": "/site.webmanifest" });
+  // Adicione aqui qualquer outro ficheiro de favicon que tenha na pasta public.
 
 
   // --- FILTROS DE TEMPLATE ---
-  // Permitem-nos transformar dados nos nossos ficheiros de template.
-
-  // Filtro para formatar datas num formato legível (ex: July 20, 2024)
-  eleventyConfig.addFilter("readableDate", dateObj => {
-    return new Date(dateObj).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-  });
-
-  // Filtro para formatar datas no padrão ISO (para o atributo <time datetime="">)
-  eleventyConfig.addFilter('isoDate', (dateObj) => {
-    return new Date(dateObj).toISOString();
-  });
-
-  // Filtro para criar URLs absolutos, necessário para os botões de partilha
-  eleventyConfig.addFilter("absoluteUrl", (url, base) => {
-    try {
-        return (new URL(url, base)).toString();
-    } catch(e) {
-        console.error("Could not resolve absolute url: ", e);
-        return url;
-    }
-  });
-
-  // Filtro para codificar strings para URLs, usado nos botões de partilha
-  eleventyConfig.addFilter("url_encode", (str) => {
-    return encodeURIComponent(str);
-  });
-
-  // Filtro para criar "slugs" a partir de strings (ex: "Travel Tips" -> "travel-tips")
+  eleventyConfig.addFilter("readableDate", dateObj => new Date(dateObj).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
+  eleventyConfig.addFilter('isoDate', (dateObj) => new Date(dateObj).toISOString());
+  eleventyConfig.addFilter("absoluteUrl", (url, base) => new URL(url, base).toString());
+  eleventyConfig.addFilter("url_encode", (str) => encodeURIComponent(str));
   eleventyConfig.addFilter("slugify", function(str) {
       return slugify(str, {
           lower: true,
@@ -57,17 +43,13 @@ module.exports = function(eleventyConfig) {
   });
 
   // --- COLEÇÕES PERSONALIZADAS ---
-  // Cria coleções de dados que podemos usar nos nossos templates.
   eleventyConfig.addCollection("navTags", function(collectionApi) {
       let tagSet = new Set();
       collectionApi.getAll().forEach(item => {
           if ("tags" in item.data) {
               let tags = item.data.tags;
               if (typeof tags === "string") { tags = [tags]; }
-              
-              // AQUI DEFINIMOS AS TAGS QUE APARECEM NO MENU PRINCIPAL
               const navTags = ["Lisbon", "Sintra", "History", "Palaces", "Travel Tips", "Family", "Boat Trips", "Architecture", "UNESCO"];
-              
               tags.forEach(tag => {
                   if (navTags.includes(tag)) {
                       tagSet.add(tag);
@@ -75,13 +57,10 @@ module.exports = function(eleventyConfig) {
               });
           }
       });
-      // Retorna um array ordenado de tags para o menu
       return [...tagSet].sort((a, b) => a.localeCompare(b));
   });
 
-
   // --- CONFIGURAÇÃO PRINCIPAL DO ELEVENTY ---
-  // Define as pastas de entrada, output, e os motores de template a usar.
   return {
     dir: {
       input: ".",
