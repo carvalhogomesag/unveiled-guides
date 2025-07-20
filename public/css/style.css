@@ -53,7 +53,7 @@ a:hover {
 }
 
 .logo-link {
-    z-index: 1001; /* Garante que o logo fica acima do menu mobile */
+    z-index: 9999; /* Garante que o logo fica sempre visível */
 }
 
 .site-logo {
@@ -73,11 +73,11 @@ a:hover {
     border: 0;
     padding: 0.5rem;
     cursor: pointer;
-    z-index: 9999; /* Garante que o botão fica acima de tudo */
+    z-index: 9999;
 }
 .mobile-nav-toggle .icon-close { display: none; }
 
-/* NAVEGAÇÃO PRINCIPAL */
+/* NAVEGAÇÃO PRINCIPAL (DESKTOP) */
 .main-nav {
     list-style: none;
     margin: 0;
@@ -97,35 +97,44 @@ a:hover {
     font-size: 0.9rem;
     position: relative;
 }
+.main-nav a:hover {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
 
-/* --- MEDIA QUERY PARA MOBILE --- */
-@media (max-width: 850px) {
+/* --- MEDIA QUERY PARA MOBILE (A PARTE IMPORTANTE) --- */
+@media (max-width: 900px) {
     .mobile-nav-toggle {
-        display: block;
+        display: block; /* Mostra o botão */
     }
 
     .main-nav-wrapper {
+        /* Oculta o contentor de navegação em mobile */
+        display: none;
+    }
+    
+    .main-nav {
+        /* Posição inicial: fora da tela, à direita */
         position: fixed;
-        inset: 0 0 0 30%;
-        background: hsl(0 0% 100% / 0.8);
-        backdrop-filter: blur(1rem);
-        -webkit-backdrop-filter: blur(1rem);
+        inset: 0 0 0 30%; /* Do topo à base, da direita até 30% da esquerda */
         
+        /* Layout e Estilo */
+        flex-direction: column;
+        padding: min(20vh, 10rem) 2em;
+        gap: 2rem;
+        background: hsl(0 0% 100% / 0.1);
+        backdrop-filter: blur(1.5rem);
+        -webkit-backdrop-filter: blur(1.5rem);
+        
+        /* Animação */
         transform: translateX(100%);
         transition: transform 350ms ease-out;
         z-index: 1000;
-        
-        padding: min(20vh, 10rem) 2em;
     }
     
-    .main-nav-wrapper[data-visible="true"] {
+    /* Quando o menu está VISÍVEL */
+    .main-nav[data-visible="true"] {
         transform: translateX(0%);
-    }
-
-    .main-nav {
-        flex-direction: column;
-        gap: 2rem;
-        align-items: flex-start;
     }
     
     .main-nav a {
@@ -136,9 +145,10 @@ a:hover {
     .mobile-nav-toggle[aria-expanded="true"] .icon-close { display: block; }
 
     body.body--nav-open {
-        overflow: hidden;
+        overflow: hidden; /* Impede o scroll */
     }
 }
+
 
 /* --- SECÇÃO HERO (TOPO DA HOME) --- */
 .hero-section {
@@ -364,7 +374,7 @@ a.card-link:hover .card-image {
 }
 
 .sidebar-widget-sticky {
-    position: static; /* Desligar o 'sticky' em mobile por defeito */
+    position: static;
     top: auto;
     background: var(--light-gray-bg);
     padding: 1.5rem;
@@ -374,7 +384,7 @@ a.card-link:hover .card-image {
 @media (min-width: 992px) {
     .sidebar-widget-sticky {
         position: sticky;
-        top: 100px; /* Ajustado para a altura do novo header sticky */
+        top: 100px;
     }
 }
 
