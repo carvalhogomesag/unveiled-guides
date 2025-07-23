@@ -10,10 +10,12 @@ tags:
 templateEngineOverride: md, njk
 featuredImage: "/images/dubai-burj-khalifa-view.jpg"
 summary: "Visiting the world's tallest building? Don't fall into the common tourist traps. Learn the difference between the observation decks and why a specific ticket is the key to a truly premium experience."
+sidebar:
+  title: "Top Experiences in Dubai"
+  query: "dubai"
 ---
 
 ![Vista do topo do Burj Khalifa, olhando para baixo sobre os arranha-céus de Dubai](/images/dubai-burj-khalifa-view.jpg)
-*(Nota: Encontre uma imagem deslumbrante da vista do topo e nomeie-a assim)*
 
 Standing at a staggering 828 meters, the [**Burj Khalifa**](https://www.getyourguide.com/dubai-l173/dubai-burj-khalifa-sky-level-148-124-125-entry-ticket-t49181/?partner_id=PMW7G72) in Dubai isn't just a skyscraper; it's a testament to human ambition. A visit to its observation decks is a must-do for any traveler. But here's the secret most guides won't tell you: there's a right way and a wrong way to do it. The "trap" isn't a scam, it's the frustration of waiting in colossal queues and ending up on a crowded floor, missing the truly exclusive experience.
 

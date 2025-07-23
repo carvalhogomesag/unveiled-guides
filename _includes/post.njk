@@ -7,6 +7,7 @@ layout: "base.njk"
             <h1 class="article-title">{{ title }}</h1>
             <div class="article-meta">
                 <div class="author-info">
+                    <!-- ** CAMINHO DA IMAGEM CORRIGIDO ** -->
                     <img src="/images/site/author-avatar.jpg" alt="Author's photo" class="author-avatar">
                     <span>By Unveiled Guides Team</span>
                 </div>
@@ -37,7 +38,6 @@ layout: "base.njk"
             {{ content | safe }}
         </div>
 
-        <!-- Bloco de Tags (NOVA SECÇÃO) -->
         <footer class="article-tags">
             <h4>Tagged In:</h4>
             <ul>
@@ -51,12 +51,15 @@ layout: "base.njk"
                 {% endfor %}
             </ul>
         </footer>
-    </div> <!-- Fim de .article-main-content -->
+    </div>
 
+    <!-- *** LÓGICA DA SIDEBAR DINÂMICA *** -->
+    {% if sidebar %}
     <aside class="article-sidebar">
         <div class="sidebar-widget-sticky">
-            <h4>Top Experiences in Lisbon</h4>
-            <div data-gyg-href="https://widget.getyourguide.com/default/activities.frame" data-gyg-locale-code="en-US" data-gyg-widget="activities" data-gyg-number-of-items="3" data-gyg-partner-id="PMW7G72" data-gyg-q="lisboa"></div>
+            <h4>{{ sidebar.title }}</h4>
+            <div data-gyg-href="https://widget.getyourguide.com/default/activities.frame" data-gyg-locale-code="en-US" data-gyg-widget="activities" data-gyg-number-of-items="3" data-gyg-partner-id="PMW7G72" data-gyg-q="{{ sidebar.query }}"></div>
         </div>
     </aside>
+    {% endif %}
 </article>
