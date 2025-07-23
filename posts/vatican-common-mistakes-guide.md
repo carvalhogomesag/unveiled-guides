@@ -18,7 +18,7 @@ sidebar:
 ---
 
 ![Close-up do teto da Capela Sistina, mostrando a 'Criação de Adão' de Michelangelo](/images/vatican-sistine-chapel-ceiling.jpg)
-*(Nota: Encontre uma imagem deslumbrante do teto da Capela Sistina e nomeie-a assim)*
+
 
 Standing in the heart of the Sistine Chapel, gazing up at Michelangelo's masterpiece, is a moment that stays with you forever. As a guide, I've seen the look of pure awe on countless faces. But I've also seen the look of utter disappointment on the faces of travelers who, after waiting for hours, are turned away at the entrance for one simple, entirely avoidable mistake.
 
