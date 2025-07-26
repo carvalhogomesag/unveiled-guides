@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} | Unveiled Guides</title>
-    <meta name="description" content="Expert historical and practical guides to Portugal's most iconic landmarks. Discover the stories behind the sights and make your trip unforgettable.">
-    <meta name="p:domain_verify" content="c30647f17c3d65546057a6042b9ae0e7"/>
+    <!-- MENSAGEM GLOBALIZADA -->
+    <meta name="description" content="Expert historical and practical guides to the world's most iconic landmarks. Discover the stories behind the sights, avoid the traps, and make your trip unforgettable.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,17 +34,30 @@
 </head>
 <body>
 
+    <!-- MENSAGEM GLOBALIZADA -->
+    <div class="top-bar">
+        Unveiling the history & secrets of iconic landmarks ✨
+    </div>
+
     <header class="site-header">
         <a href="/" class="logo-link">
             <!-- SVG do Logo Náutico -->
-            <svg class="site-logo" width="280" height="40" viewBox="0 0 280 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="site-logo" width="400" height="50" viewBox="0 0 400 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <title>Unveiled Guides Logo</title>
-                <g class="logo-symbol"><path d="M20 2V10M20 30V38M38 20H30M10 20H2M32.6274 7.37258L25.8594 14.1406M14.1406 25.8594L7.37258 32.6274M32.6274 32.6274L25.8594 25.8594M14.1406 14.1406L7.37258 7.37258" stroke="var(--dark-text)" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="20" r="12" fill="white" stroke="var(--dark-text)" stroke-width="2"/><circle cx="20" cy="20" r="4" fill="var(--primary-blue)"/></g>
-                <g class="logo-text"><text x="45" y="27" font-family="Cinzel, serif" font-size="20" font-weight="700" fill="var(--dark-text)">Unveiled Guides</text></g>
+                <g class="logo-symbol">
+                    <path d="M25 5V15M25 35V45M45 25H35M15 25H5M35.3553 14.6447L29.6985 20.3015M20.3015 29.6985L14.6447 35.3553M35.3553 35.3553L29.6985 29.6985M20.3015 20.3015L14.6447 14.6447" stroke="var(--dark-text)" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="25" cy="25" r="15" fill="white" stroke="var(--dark-text)" stroke-width="3"/>
+                    <circle cx="25" cy="25" r="5" fill="var(--primary-blue)"/>
+                </g>
+                <g class="logo-text">
+                    <text x="55" y="32" font-family="Cinzel, serif" font-size="24" font-weight="700" fill="var(--dark-text)">Unveiled Guides</text>
+                    <!-- MENSAGEM GLOBALIZADA -->
+                    <text x="55" y="46" font-family="var(--sans-serif-font)" font-size="10" fill="#6b7280">Your essential guides to the world's greatest sights</text>
+                </g>
             </svg>
         </a>
 
-        <!-- Navegação de Desktop (visível apenas em telas grandes) -->
+        <!-- Navegação de Desktop -->
         <nav class="main-nav">
             <ul>
                 {% for item in navigation.items %}
@@ -55,14 +68,14 @@
             </ul>
         </nav>
 
-        <!-- Botão Hambúrguer para Mobile (O Gatilho) -->
+        <!-- Botão Hambúrguer para Mobile -->
         <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
             <span class="sr-only">Menu</span>
             <div class="hamburger-lines"></div>
         </button>
     </header>
 
-    <!-- O Menu Modal (O Alvo, para mobile) -->
+    <!-- Menu Modal para Mobile -->
     <nav class="fullscreen-nav" id="primary-navigation" data-visible="false">
         <ul class="fullscreen-nav__list">
             {% for item in navigation.items %}
@@ -74,9 +87,10 @@
     </nav>
 
     {% if page.url == '/' %}
+    <!-- MENSAGEM GLOBALIZADA -->
     <div class="hero-section">
-        <h2>Discover the Stories Behind the Sights</h2>
-        <p>We provide in-depth guides to help you understand the rich history of Portugal's landmarks, transforming your visit from a simple photo-op into an unforgettable experience.</p>
+        <h2>Unlock the Secrets of the World's Greatest Landmarks</h2>
+        <p>We go beyond the typical tourist guides. Discover the hidden histories, avoid the common traps, and transform your visit from a simple photo-op into an unforgettable experience.</p>
     </div>
     {% endif %}
 
