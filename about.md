@@ -6,7 +6,7 @@ sidebar:
   query: 
 ---
 
-!(/public/images/site/author-photo.jpg)
+
 
 
 ## The Story Behind Unveiled Guides
