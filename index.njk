@@ -9,9 +9,6 @@ layout: "base.njk"
 {# Pega no primeiro item dessa lista (o mais recente) como o post em destaque #}
 {% set featuredPost = postsInOrder[0] %}
 
-{# Cria a lista de posts restantes, excluindo o primeiro #}
-{% set remainingPosts = postsInOrder | slice(1) %}
-
 
 {% if featuredPost %}
 <section class="featured-guide">
@@ -32,26 +29,29 @@ layout: "base.njk"
 {% endif %}
 
 
-{# ** AQUI ESTÁ A CORREÇÃO ** #}
-{# Apenas mostra esta secção se houver posts restantes #}
-{% if remainingPosts.length > 0 %}
+{# ** AQUI ESTÁ A LÓGICA CORRIGIDA E ROBUSTA ** #}
+{# Verifica se existe mais do que um post no total #}
+{% if postsInOrder.length > 1 %}
 <h3 class="section-title">All Our Guides</h3>
 
 <div class="guides-grid">
-    {# O loop agora percorre a lista de posts restantes #}
-    {% for post in remainingPosts %}
-    <a href="{{ post.url }}" class="card-link">
-        <article class="card">
-            <div class="card-image-wrapper">
-                <img src="{{ post.data.featuredImage }}" alt="{{ post.data.title }}" class="card-image">
-            </div>
-            <div class="card-content">
-                <h3 class="card-title">{{ post.data.title }}</h3>
-                <p class="card-summary">{{ post.data.summary }}</p>
-                <span class="card-read-more">Read Guide →</span>
-            </div>
-        </article>
-    </a>
+    {# Percorre a lista completa de posts #}
+    {% for post in postsInOrder %}
+        {# Adiciona uma condição para SALTAR o primeiro post (o que já está em destaque) #}
+        {% if loop.index0 > 0 %}
+            <a href="{{ post.url }}" class="card-link">
+                <article class="card">
+                    <div class="card-image-wrapper">
+                        <img src="{{ post.data.featuredImage }}" alt="{{ post.data.title }}" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">{{ post.data.title }}</h3>
+                        <p class="card-summary">{{ post.data.summary }}</p>
+                        <span class="card-read-more">Read Guide →</span>
+                    </div>
+                </article>
+            </a>
+        {% endif %}
     {% endfor %}
 </div>
 {% endif %}
