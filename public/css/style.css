@@ -43,6 +43,17 @@ a:hover {
     color: var(--accent-teal);
 }
 
+/* --- TOP BAR (A REGRA QUE FALTAVA) --- */
+.top-bar {
+    background-color: var(--primary-blue);
+    color: white;
+    text-align: center; /* Centraliza o texto */
+    padding: 0.5rem 1rem;
+    font-family: var(--display-font);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
 /* --- CABEÇALHO E NAVEGAÇÃO --- */
 .site-header {
     background: white;
@@ -511,7 +522,7 @@ a.featured-card-link {
 }
 .featured-card {
     display: grid;
-    grid-template-columns: 1fr; /* Coluna única em mobile */
+    grid-template-columns: 1fr;
     background: white;
     border-radius: 16px;
     overflow: hidden;
@@ -524,7 +535,7 @@ a.featured-card-link:hover .featured-card {
 }
 @media (min-width: 800px) {
     .featured-card {
-        grid-template-columns: 1fr 1fr; /* Duas colunas em desktop */
+        grid-template-columns: 1fr 1fr;
     }
 }
 .featured-image-wrapper {
