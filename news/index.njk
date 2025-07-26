@@ -37,7 +37,7 @@ layout: "base.njk"
 
 <div class="guides-grid">
     {% for post in remainingPosts %}
-    <a href="{{ post.url }}" class="card-link">
+    <a href="{git status{ post.url }}" class="card-link">
         <article class="card">
             <div class="card-image-wrapper">
                 <img src="{{ post.data.featuredImage }}" alt="{{ post.data.title }}" class="card-image">
