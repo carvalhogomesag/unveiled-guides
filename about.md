@@ -6,7 +6,7 @@ sidebar:
   query: 
 ---
 
-![Uma foto sua num local de viagem, sorrindo ou a olhar para um monumento](/public/images/site/author-photo.jpg)
+!(/public/images/site/author-photo.jpg)
 
 
 ## The Story Behind Unveiled Guides
