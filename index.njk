@@ -32,10 +32,13 @@ layout: "base.njk"
 {% endif %}
 
 
+{# ** AQUI ESTÁ A CORREÇÃO ** #}
+{# Apenas mostra esta secção se houver posts restantes #}
 {% if remainingPosts.length > 0 %}
 <h3 class="section-title">All Our Guides</h3>
 
 <div class="guides-grid">
+    {# O loop agora percorre a lista de posts restantes #}
     {% for post in remainingPosts %}
     <a href="{{ post.url }}" class="card-link">
         <article class="card">
