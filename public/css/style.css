@@ -43,11 +43,11 @@ a:hover {
     color: var(--accent-teal);
 }
 
-/* --- TOP BAR (A REGRA QUE FALTAVA) --- */
+/* --- TOP BAR --- */
 .top-bar {
     background-color: var(--primary-blue);
     color: white;
-    text-align: center; /* Centraliza o texto */
+    text-align: center;
     padding: 0.5rem 1rem;
     font-family: var(--display-font);
     font-size: 0.9rem;
@@ -528,6 +528,7 @@ a.featured-card-link {
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.07);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 a.featured-card-link:hover .featured-card {
     transform: translateY(-5px);
@@ -568,6 +569,7 @@ a.featured-card-link:hover .featured-card {
     font-size: clamp(1.8rem, 4vw, 2.5rem);
     line-height: 1.2;
     margin: 0 0 1rem 0;
+    color: var(--dark-text);
 }
 .featured-summary {
     font-size: 1.1rem;
