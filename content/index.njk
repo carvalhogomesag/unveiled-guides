@@ -3,39 +3,16 @@ title: "Your Expert Guides to the World's Greatest Landmarks"
 layout: "base.njk"
 ---
 
-{# Define a lista de posts (já vem ordenada pela nossa coleção) #}
-{% set postsInOrder = collections.post %}
+<div class="hero-section">
+    <h2>Unlock the Secrets of the World's Greatest Landmarks</h2>
+    <p>We go beyond the typical tourist guides. Discover the hidden histories, avoid the common traps, and transform your visit from a simple photo-op into an unforgettable experience.</p>
+</div>
 
-{# Pega no primeiro item como destaque #}
-{% set featuredPost = postsInOrder[0] %}
-
-{# Pega nos restantes #}
-{% set remainingPosts = postsInOrder | slice(1) %}
-
-
-{% if featuredPost %}
-<section class="featured-guide">
-    <a href="{{ featuredPost.url }}" class="featured-card-link">
-        <div class="featured-card">
-            <div class="featured-image-wrapper">
-                <img src="{{ featuredPost.data.featuredImage }}" alt="{{ featuredPost.data.title }}">
-            </div>
-            <div class="featured-content">
-                <span class="featured-tag">Latest Guide</span>
-                <h2 class="featured-title">{{ featuredPost.data.title }}</h2>
-                <p class="featured-summary">{{ featuredPost.data.summary }}</p>
-                <span class="card-read-more">Read Full Guide →</span>
-            </div>
-        </div>
-    </a>
-</section>
-{% endif %}
-
-
-{% if remainingPosts.length > 0 %}
 <h3 class="section-title">All Our Guides</h3>
+
 <div class="guides-grid">
-    {% for post in remainingPosts %}
+    {# Este é o único loop de que precisamos. Ele mostra TODOS os posts. #}
+    {% for post in collections.post %}
         <a href="{{ post.url }}" class="card-link">
             <article class="card">
                 <div class="card-image-wrapper">
@@ -50,4 +27,3 @@ layout: "base.njk"
         </a>
     {% endfor %}
 </div>
-{% endif %}
