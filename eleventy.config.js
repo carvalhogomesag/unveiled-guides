@@ -4,8 +4,7 @@ import pluginRss from "@11ty/eleventy-plugin-rss";
 import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
 
-// Importa os NOSSOS plugins e módulos (sintaxe ES Module)
-import slugify from "slugify";
+// Importa apenas os plugins que estamos a usar
 import nestingToc from 'eleventy-plugin-nesting-toc';
 
 export default function(eleventyConfig) {
@@ -26,14 +25,12 @@ export default function(eleventyConfig) {
         headingClass: 'toc-title'
     });
 
-    // --- FILTROS DE TEMPLATE (VERSÃO FINAL E CORRIGIDA) ---
+    // --- FILTROS DE TEMPLATE (SECÇÃO REMOVIDA) ---
+    // Removemos todos os filtros personalizados para garantir a estabilidade do build.
+    // O filtro 'slugify' agora precisa de ser adicionado de volta para as tags.
+    const slugify = require("slugify");
     eleventyConfig.addFilter("slugify", function(str) {
         return slugify(str, { lower: true, strict: true, remove: /["]/g });
-    });
-
-    // Filtro para codificar strings para URLs
-    eleventyConfig.addFilter("url_encode", (str) => {
-        return encodeURIComponent(str);
     });
 
     // --- COLEÇÕES ---
