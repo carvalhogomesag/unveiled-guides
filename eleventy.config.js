@@ -31,16 +31,10 @@ export default function(eleventyConfig) {
     eleventyConfig.addFilter("slugify", function(str) {
         return slugify(str, { lower: true, strict: true, remove: /["]/g });
     });
+
+    // Filtro para codificar strings para URLs
     eleventyConfig.addFilter("url_encode", (str) => {
         return encodeURIComponent(str);
-    });
-    eleventyConfig.addFilter("absoluteUrl", (url, base) => {
-        try {
-            return (new URL(url, base)).toString();
-        } catch(e) {
-            console.error(`Error creating absolute URL for ${url}: ${e.message}`);
-            return url;
-        }
     });
 
     // --- COLEÇÕES ---
