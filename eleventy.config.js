@@ -1,12 +1,23 @@
-const slugify = require("slugify");
-const nestingToc = require('eleventy-plugin-nesting-toc');
+// Importa os plugins do template base (sintaxe ES Module)
+import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
+import pluginRss from "@11ty/eleventy-plugin-rss";
+import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import pluginNavigation from "@11ty/eleventy-navigation";
 
-module.exports = function(eleventyConfig) {
+// Importa os NOSSOS plugins e módulos (sintaxe ES Module)
+import slugify from "slugify";
+import nestingToc from 'eleventy-plugin-nesting-toc';
+
+export default function(eleventyConfig) {
     
-    // PASSTHROUGH
+    // --- PASSTHROUGH (Cópia de Assets) ---
     eleventyConfig.addPassthroughCopy({ "public/": "/" });
     
-    // PLUGINS
+    // --- PLUGINS ---
+    eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+    eleventyConfig.addPlugin(pluginRss);
+    eleventyConfig.addPlugin(pluginSyntaxHighlight, { preAttributes: { tabindex: 0 } });
+    eleventyConfig.addPlugin(pluginNavigation);
     eleventyConfig.addPlugin(nestingToc, {
         tags: ['h2', 'h3'],
         wrapper: 'div',
@@ -15,15 +26,21 @@ module.exports = function(eleventyConfig) {
         headingClass: 'toc-title'
     });
 
-    // FILTROS
-    eleventyConfig.addFilter("slugify", str => slugify(str, { lower: true, strict: true }));
-
-    // COLEÇÕES
-    eleventyConfig.addCollection("post", collectionApi => {
-        return collectionApi.getFilteredByGlob("./content/posts/**/*.md").sort((a, b) => b.date - a.date);
+    // --- FILTROS DE TEMPLATE ---
+    eleventyConfig.addFilter("slugify", function(str) {
+        return slugify(str, { lower: true, strict: true, remove: /["]/g });
     });
 
-    // CONFIGURAÇÃO
+    // --- COLEÇÕES (LÓGICA ATUALIZADA) ---
+    eleventyConfig.addCollection("post", function(collectionApi) {
+        // Pega em TODOS os ficheiros que têm a tag 'post',
+        // independentemente da pasta onde estão, e ordena por data.
+        return collectionApi.getFilteredByTag("post").sort((a, b) => {
+            return b.date - a.date;
+        });
+    });
+
+    // --- CONFIGURAÇÃO PRINCIPAL DO ELEVENTY ---
     return {
         templateFormats: ["md", "njk", "html"],
         markdownTemplateEngine: "njk",
@@ -33,6 +50,7 @@ module.exports = function(eleventyConfig) {
             includes: "../_includes",
             data: "../_data",
             output: "_site"
-        }
+        },
+        passthroughFileCopy: true
     };
 };
