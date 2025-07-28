@@ -5,7 +5,6 @@ import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
 
 // Importa os NOSSOS plugins e módulos (sintaxe ES Module)
-import { URL } from "url";
 import slugify from "slugify";
 import nestingToc from 'eleventy-plugin-nesting-toc';
 
@@ -27,7 +26,7 @@ export default function(eleventyConfig) {
         headingClass: 'toc-title'
     });
 
-    // --- FILTROS DE TEMPLATE (VERSÃO FINAL E COMPLETA) ---
+    // --- FILTROS DE TEMPLATE (VERSÃO FINAL E CORRIGIDA) ---
     eleventyConfig.addFilter("slugify", function(str) {
         return slugify(str, { lower: true, strict: true, remove: /["]/g });
     });
