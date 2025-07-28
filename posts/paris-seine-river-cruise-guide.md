@@ -1,7 +1,7 @@
 ---
 title: "Seine River Cruise: Don't Book Until You Read These 5 Tips"
 layout: "post.njk"
-date: "2024-07-28"
+date: "2023-07-28"
 draft: false
 tags:
   - post
