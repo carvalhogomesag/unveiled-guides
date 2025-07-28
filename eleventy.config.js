@@ -4,8 +4,9 @@ import pluginRss from "@11ty/eleventy-plugin-rss";
 import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
 
-// Importa apenas os plugins que estamos a usar
-import nestingToc from 'eleventy-plugin-nesting-toc';
+// Importa os NOSSOS plugins e módulos (sintaxe ES Module)
+import slugify from "slugify";
+import nestingToc from 'eleventy-plugin-nesting-toc'; // <-- IMPORTAÇÃO CORRETA
 
 export default function(eleventyConfig) {
     
@@ -17,6 +18,9 @@ export default function(eleventyConfig) {
     eleventyConfig.addPlugin(pluginRss);
     eleventyConfig.addPlugin(pluginSyntaxHighlight, { preAttributes: { tabindex: 0 } });
     eleventyConfig.addPlugin(pluginNavigation);
+    
+    // ** AQUI ESTÁ A CORREÇÃO **
+    // Readiciona o plugin da Tabela de Conteúdos
     eleventyConfig.addPlugin(nestingToc, {
         tags: ['h2', 'h3'],
         wrapper: 'div',
@@ -25,10 +29,7 @@ export default function(eleventyConfig) {
         headingClass: 'toc-title'
     });
 
-    // --- FILTROS DE TEMPLATE (SECÇÃO REMOVIDA) ---
-    // Removemos todos os filtros personalizados para garantir a estabilidade do build.
-    // O filtro 'slugify' agora precisa de ser adicionado de volta para as tags.
-    const slugify = require("slugify");
+    // --- FILTROS DE TEMPLATE ---
     eleventyConfig.addFilter("slugify", function(str) {
         return slugify(str, { lower: true, strict: true, remove: /["]/g });
     });
