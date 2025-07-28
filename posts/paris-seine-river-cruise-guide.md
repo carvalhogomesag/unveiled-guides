@@ -2,6 +2,7 @@
 title: "Seine River Cruise: Don't Book Until You Read These 5 Tips"
 layout: "post.njk"
 date: "2024-07-28"
+# --- AQUI ESTÁ A CORREÇÃO CRUCIAL ---
 tags:
   - post
   - Paris
@@ -16,7 +17,6 @@ sidebar:
 ---
 
 ![Um barco de cruzeiro no Rio Sena à noite, com a Torre Eiffel iluminada ao fundo](/images/paris-seine-cruise-night.jpg)
-*(Nota: Encontre uma imagem deslumbrante de um cruzeiro noturno no Sena e nomeie-a assim)*
 
 Gliding down the Seine River as Paris's iconic landmarks drift by is a quintessential travel experience. It’s a moment of pure magic, offering a perspective of the City of Light you simply can't get from its streets. But with a dozen operators, various cruise types, and endless booking options, choosing the right one can feel overwhelming.
 
