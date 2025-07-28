@@ -1,34 +1,21 @@
-// Importa os plugins do template base (sintaxe ES Module)
-import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
-import pluginRss from "@11ty/eleventy-plugin-rss";
-import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
-import pluginNavigation from "@11ty/eleventy-navigation";
+// Sintaxe antiga e robusta (CommonJS)
+const slugify = require("slugify");
+const nestingToc = require('eleventy-plugin-nesting-toc');
 
-// Importa os NOSSOS plugins e módulos (sintaxe ES Module)
-import slugify from "slugify";
-import nestingToc from 'eleventy-plugin-nesting-toc';
-
-export default function(eleventyConfig) {
+module.exports = function(eleventyConfig) {
     
     // --- PASSTHROUGH (Cópia de Assets) ---
     // Copia o CONTEÚDO da pasta 'public' para a raiz do site final.
-    // Exemplo: public/css/style.css -> _site/css/style.css
     eleventyConfig.addPassthroughCopy({ "public/": "/" });
     
     // --- PLUGINS ---
-    // Plugins do Eleventy Base Blog (essenciais para o template funcionar)
-    eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
-    eleventyConfig.addPlugin(pluginRss);
-    eleventyConfig.addPlugin(pluginSyntaxHighlight, { preAttributes: { tabindex: 0 } });
-    eleventyConfig.addPlugin(pluginNavigation);
-    
-    // Nosso plugin da Tabela de Conteúdos
+    // Plugin da Tabela de Conteúdos
     eleventyConfig.addPlugin(nestingToc, {
-        tags: ['h2', 'h3'], // Quais cabeçalhos devem entrar na TOC
-        wrapper: 'div',           // Elemento HTML que envolve a TOC
-        wrapperClass: 'toc',      // Classe CSS para o contentor da TOC
-        headingText: 'On This Page', // Título visível da TOC
-        headingClass: 'toc-title'  // Classe CSS para o título da TOC
+        tags: ['h2', 'h3'],
+        wrapper: 'div',
+        wrapperClass: 'toc',
+        headingText: 'On This Page',
+        headingClass: 'toc-title'
     });
 
     // --- FILTROS DE TEMPLATE ---
@@ -40,21 +27,23 @@ export default function(eleventyConfig) {
     // --- COLEÇÕES ---
     // Define a coleção "post" a partir dos nossos artigos e ordena por data
     eleventyConfig.addCollection("post", function(collectionApi) {
-        return collectionApi.getFilteredByGlob("./content/posts/**/*.md").sort((a, b) => b.date - a.date);
+        return collectionApi.getFilteredByGlob("./content/posts/**/*.md").sort((a, b) => {
+            return b.date - a.date; // Ordena do mais novo para o mais antigo
+        });
     });
 
     // --- CONFIGURAÇÃO PRINCIPAL DO ELEVENTY ---
     // Define as pastas de entrada/saída e os motores de template
     return {
-        templateFormats: ["md", "njk", "html"], // Formatos de ficheiro a processar
-        markdownTemplateEngine: "njk",         // Processar Markdown com Nunjucks
-        htmlTemplateEngine: "njk",             // Processar HTML com Nunjucks
+        templateFormats: ["md", "njk", "html"],
+        markdownTemplateEngine: "njk",
+        htmlTemplateEngine: "njk",
         dir: {
-            input: "content",         // Pasta onde está o nosso conteúdo principal
-            includes: "../_includes", // Onde estão os nossos layouts e componentes
-            data: "../_data",         // Onde estão os nossos ficheiros de dados globais
-            output: "_site"           // Pasta onde o site final será gerado
+            input: "content",
+            includes: "../_includes",
+            data: "../_data",
+            output: "_site"
         },
-        passthroughFileCopy: true // Permite que ficheiros estáticos sejam copiados
+        passthroughFileCopy: true
     };
 };

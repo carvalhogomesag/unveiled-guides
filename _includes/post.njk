@@ -10,11 +10,8 @@ layout: "base.njk"
                     <img src="/images/site/author-avatar.jpg" alt="Author's photo" class="author-avatar">
                     <span>By Unveiled Guides Team</span>
                 </div>
-                <!-- A secção de botões de partilha foi removida daqui -->
             </div>
         </header>
-
-        {{ content | toc | safe }}
 
         <div class="article-body">
             {{ content | safe }}
@@ -38,7 +35,7 @@ layout: "base.njk"
     <aside class="article-sidebar">
         <div class="sidebar-widget-sticky">
             <h4>{{ sidebar.title }}</h4>
-            <div data-gyg-href="https://widget.getyourguide.com/default/activities.frame" data-gyg-locale-code="en-US" data-gyg-widget="activities" data-gyg-number-of-items="3" data-gyg-partner-id="PMW7G72" data-gyg-q="{{ sidebar.query }}"></div>
+            <div data-gyg-q="{{ sidebar.query }}"></div>
         </div>
     </aside>
     {% endif %}
