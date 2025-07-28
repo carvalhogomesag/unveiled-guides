@@ -1,10 +1,7 @@
-// Importa os plugins do template base (sintaxe ES Module)
+// Importa APENAS os plugins que estão no nosso package.json
 import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
-import pluginRss from "@11ty/eleventy-plugin-rss";
 import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
-
-// Importa os NOSSOS plugins e módulos (sintaxe ES Module)
 import slugify from "slugify";
 import nestingToc from 'eleventy-plugin-nesting-toc';
 
@@ -15,7 +12,6 @@ export default function(eleventyConfig) {
     
     // --- PLUGINS ---
     eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
-    eleventyConfig.addPlugin(pluginRss);
     eleventyConfig.addPlugin(pluginSyntaxHighlight, { preAttributes: { tabindex: 0 } });
     eleventyConfig.addPlugin(pluginNavigation);
     eleventyConfig.addPlugin(nestingToc, {
@@ -31,10 +27,8 @@ export default function(eleventyConfig) {
         return slugify(str, { lower: true, strict: true, remove: /["]/g });
     });
 
-    // --- COLEÇÕES (LÓGICA ATUALIZADA) ---
+    // --- COLEÇÕES ---
     eleventyConfig.addCollection("post", function(collectionApi) {
-        // Pega em TODOS os ficheiros que têm a tag 'post',
-        // independentemente da pasta onde estão, e ordena por data.
         return collectionApi.getFilteredByTag("post").sort((a, b) => {
             return b.date - a.date;
         });
