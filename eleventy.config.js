@@ -1,19 +1,12 @@
-// Importa APENAS os plugins que estão no nosso package.json
-import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
-import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
-import pluginNavigation from "@11ty/eleventy-navigation";
 import slugify from "slugify";
 import nestingToc from 'eleventy-plugin-nesting-toc';
 
 export default function(eleventyConfig) {
     
-    // --- PASSTHROUGH (Cópia de Assets) ---
+    // A única coisa que precisamos: copiar os nossos assets.
     eleventyConfig.addPassthroughCopy({ "public/": "/" });
     
-    // --- PLUGINS ---
-    eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
-    eleventyConfig.addPlugin(pluginSyntaxHighlight, { preAttributes: { tabindex: 0 } });
-    eleventyConfig.addPlugin(pluginNavigation);
+    // O nosso plugin da Tabela de Conteúdos.
     eleventyConfig.addPlugin(nestingToc, {
         tags: ['h2', 'h3'],
         wrapper: 'div',
@@ -22,19 +15,17 @@ export default function(eleventyConfig) {
         headingClass: 'toc-title'
     });
 
-    // --- FILTROS DE TEMPLATE ---
+    // O nosso filtro para as tags.
     eleventyConfig.addFilter("slugify", function(str) {
         return slugify(str, { lower: true, strict: true, remove: /["]/g });
     });
 
-    // --- COLEÇÕES ---
+    // A nossa coleção de posts.
     eleventyConfig.addCollection("post", function(collectionApi) {
-        return collectionApi.getFilteredByTag("post").sort((a, b) => {
-            return b.date - a.date;
-        });
+        return collectionApi.getFilteredByTag("post").sort((a, b) => b.date - a.date);
     });
 
-    // --- CONFIGURAÇÃO PRINCIPAL DO ELEVENTY ---
+    // A configuração de pastas.
     return {
         templateFormats: ["md", "njk", "html"],
         markdownTemplateEngine: "njk",
@@ -44,7 +35,6 @@ export default function(eleventyConfig) {
             includes: "../_includes",
             data: "../_data",
             output: "_site"
-        },
-        passthroughFileCopy: true
+        }
     };
 };
