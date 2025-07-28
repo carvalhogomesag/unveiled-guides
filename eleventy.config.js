@@ -27,22 +27,19 @@ export default function(eleventyConfig) {
         headingClass: 'toc-title'
     });
 
-    // --- FILTROS DE TEMPLATE ---
+    // --- FILTROS DE TEMPLATE (VERSÃO FINAL E COMPLETA) ---
     eleventyConfig.addFilter("slugify", function(str) {
         return slugify(str, { lower: true, strict: true, remove: /["]/g });
     });
     eleventyConfig.addFilter("url_encode", (str) => {
         return encodeURIComponent(str);
     });
-
-    // ** AQUI ESTÁ A CORREÇÃO **
-    // Readiciona o filtro absoluteUrl que estava em falta
     eleventyConfig.addFilter("absoluteUrl", (url, base) => {
         try {
             return (new URL(url, base)).toString();
         } catch(e) {
             console.error(`Error creating absolute URL for ${url}: ${e.message}`);
-            return url; // Retorna o URL original em caso de erro
+            return url;
         }
     });
 
