@@ -13,6 +13,8 @@ layout: "base.njk"
             </div>
         </header>
 
+        {{ content | toc | safe }}
+
         <div class="article-body">
             {{ content | safe }}
         </div>
@@ -31,11 +33,12 @@ layout: "base.njk"
         </footer>
     </div>
 
+    <!-- *** AQUI ESTÁ A LÓGICA DA SIDEBAR DINÂMICA *** -->
     {% if sidebar %}
     <aside class="article-sidebar">
         <div class="sidebar-widget-sticky">
             <h4>{{ sidebar.title }}</h4>
-            <div data-gyg-q="{{ sidebar.query }}"></div>
+            <div data-gyg-widget="activities" data-gyg-partner-id="PMW7G72" data-gyg-number-of-items="3" data-gyg-q="{{ sidebar.query }}"></div>
         </div>
     </aside>
     {% endif %}
