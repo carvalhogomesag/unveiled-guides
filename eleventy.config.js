@@ -1,15 +1,23 @@
-// Sintaxe antiga e robusta (CommonJS)
-const slugify = require("slugify");
-const nestingToc = require('eleventy-plugin-nesting-toc');
+// Importa os plugins do template base (sintaxe ES Module)
+import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
+import pluginRss from "@11ty/eleventy-plugin-rss";
+import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import pluginNavigation from "@11ty/eleventy-navigation";
 
-module.exports = function(eleventyConfig) {
+// Importa os NOSSOS plugins e módulos (sintaxe ES Module)
+import slugify from "slugify";
+import nestingToc from 'eleventy-plugin-nesting-toc';
+
+export default function(eleventyConfig) {
     
     // --- PASSTHROUGH (Cópia de Assets) ---
-    // Copia o CONTEÚDO da pasta 'public' para a raiz do site final.
     eleventyConfig.addPassthroughCopy({ "public/": "/" });
     
     // --- PLUGINS ---
-    // Plugin da Tabela de Conteúdos
+    eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+    eleventyConfig.addPlugin(pluginRss);
+    eleventyConfig.addPlugin(pluginSyntaxHighlight, { preAttributes: { tabindex: 0 } });
+    eleventyConfig.addPlugin(pluginNavigation);
     eleventyConfig.addPlugin(nestingToc, {
         tags: ['h2', 'h3'],
         wrapper: 'div',
@@ -19,21 +27,16 @@ module.exports = function(eleventyConfig) {
     });
 
     // --- FILTROS DE TEMPLATE ---
-    // Filtro para criar URLs amigáveis (usado nas tags)
     eleventyConfig.addFilter("slugify", function(str) {
         return slugify(str, { lower: true, strict: true, remove: /["]/g });
     });
-    
+
     // --- COLEÇÕES ---
-    // Define a coleção "post" a partir dos nossos artigos e ordena por data
     eleventyConfig.addCollection("post", function(collectionApi) {
-        return collectionApi.getFilteredByGlob("./content/posts/**/*.md").sort((a, b) => {
-            return b.date - a.date; // Ordena do mais novo para o mais antigo
-        });
+        return collectionApi.getFilteredByGlob("./content/posts/**/*.md").sort((a, b) => b.date - a.date);
     });
 
     // --- CONFIGURAÇÃO PRINCIPAL DO ELEVENTY ---
-    // Define as pastas de entrada/saída e os motores de template
     return {
         templateFormats: ["md", "njk", "html"],
         markdownTemplateEngine: "njk",
