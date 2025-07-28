@@ -9,8 +9,7 @@ import { URL } from "url";
 import slugify from "slugify";
 import nestingToc from 'eleventy-plugin-nesting-toc';
 
-// Importa os filtros do template base
-import * as filters from "./_includes/filters.js";
+// A linha 'import * as filters from "./_includes/filters.js";' foi REMOVIDA
 
 export default function(eleventyConfig) {
     
@@ -31,24 +30,21 @@ export default function(eleventyConfig) {
     });
 
     // --- FILTROS DE TEMPLATE ---
-    // Adiciona os filtros do template base
-    Object.keys(filters).forEach(filterName => {
-        eleventyConfig.addFilter(filterName, filters[filterName]);
-    });
+    // A linha 'Object.keys(filters).forEach(...)' foi REMOVIDA
     
     // Adiciona os NOSSOS filtros personalizados
     eleventyConfig.addFilter("absoluteUrl", (url, base) => new URL(url, base).toString());
-    
-    // ** AQUI ESTÁ A CORREÇÃO **
-    // Readiciona o filtro url_encode que estava em falta
+    eleventyConfig.addFilter("slugify", function(str) {
+        return slugify(str, { lower: true, strict: true, remove: /["]/g });
+    });
     eleventyConfig.addFilter("url_encode", (str) => {
         return encodeURIComponent(str);
     });
 
     // --- COLEÇÕES ---
-    // Deixa o Eleventy criar a coleção "post" automaticamente a partir da tag,
-    // que é o método padrão do template base.
-    // Garanta que os seus artigos em `content/posts/` têm a tag `post`.
+    eleventyConfig.addCollection("post", function(collectionApi) {
+        return collectionApi.getFilteredByGlob("./content/posts/**/*.md").sort((a, b) => b.date - a.date);
+    });
 
     // --- CONFIGURAÇÃO PRINCIPAL DO ELEVENTY ---
     return {
