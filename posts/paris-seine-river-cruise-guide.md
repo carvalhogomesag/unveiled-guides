@@ -2,13 +2,12 @@
 title: "Seine River Cruise: Don't Book Until You Read These 5 Tips"
 layout: "post.njk"
 date: "2024-07-28"
-# --- AQUI ESTÁ A CORREÇÃO CRUCIAL ---
+draft: false
 tags:
   - post
   - Paris
   - Boat Trips
   - Travel Tips
-templateEngineOverride: md, njk
 featuredImage: "/images/paris-seine-cruise-night.jpg"
 summary: "A cruise on the Seine is a Paris essential, but which one to choose? We break down the options, the operators, and the one crucial decision (day vs. night) to ensure your experience is magical."
 sidebar:
