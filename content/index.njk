@@ -3,15 +3,12 @@ title: "Your Expert Guides to the World's Greatest Landmarks"
 layout: "base.njk"
 ---
 
-<div class="hero-section">
-    <h2>Unlock the Secrets of the World's Greatest Landmarks</h2>
-    <p>We go beyond the typical tourist guides. Discover the hidden histories, avoid the common traps, and transform your visit from a simple photo-op into an unforgettable experience.</p>
-</div>
+{# ESTA VERSÃO NÃO TEM A SECÇÃO "HERO" DUPLICADA #}
+{# ELA APENAS MOSTRA A GRELHA DE ARTIGOS #}
 
 <h3 class="section-title">All Our Guides</h3>
 
 <div class="guides-grid">
-    {# Este é o único loop de que precisamos. Ele mostra TODOS os posts. #}
     {% for post in collections.post %}
         <a href="{{ post.url }}" class="card-link">
             <article class="card">
