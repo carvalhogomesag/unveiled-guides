@@ -1,20 +1,38 @@
-import pluginRss from "@11ty/eleventy-plugin-rss";
-import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
-import pluginNavigation from "@11ty/eleventy-navigation";
-import slugify from "slugify";
-import nestingToc from 'eleventy-plugin-nesting-toc';
+const slugify = require("slugify");
+const nestingToc = require('eleventy-plugin-nesting-toc');
 
-export default function(eleventyConfig) {
+module.exports = function(eleventyConfig) {
+    
+    // PASSTHROUGH
     eleventyConfig.addPassthroughCopy({ "public/": "/" });
     
-    eleventyConfig.addPlugin(pluginRss);
-    eleventyConfig.addPlugin(pluginSyntaxHighlight, { preAttributes: { tabindex: 0 } });
-    eleventyConfig.addPlugin(pluginNavigation);
-    eleventyConfig.addPlugin(nestingToc, { /* ... */ });
+    // PLUGINS
+    eleventyConfig.addPlugin(nestingToc, {
+        tags: ['h2', 'h3'],
+        wrapper: 'div',
+        wrapperClass: 'toc',
+        headingText: 'On This Page',
+        headingClass: 'toc-title'
+    });
 
-    eleventyConfig.addFilter("slugify", function(str) { /* ... */ });
+    // FILTROS
+    eleventyConfig.addFilter("slugify", str => slugify(str, { lower: true, strict: true }));
 
-    eleventyConfig.addCollection("post", function(collectionApi) { /* ... */ });
+    // COLEÇÕES
+    eleventyConfig.addCollection("post", collectionApi => {
+        return collectionApi.getFilteredByGlob("./content/posts/**/*.md").sort((a, b) => b.date - a.date);
+    });
 
-    return { /* ... */ };
+    // CONFIGURAÇÃO
+    return {
+        templateFormats: ["md", "njk", "html"],
+        markdownTemplateEngine: "njk",
+        htmlTemplateEngine: "njk",
+        dir: {
+            input: "content",
+            includes: "../_includes",
+            data: "../_data",
+            output: "_site"
+        }
+    };
 };
