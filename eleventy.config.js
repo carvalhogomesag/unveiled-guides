@@ -9,8 +9,6 @@ import { URL } from "url";
 import slugify from "slugify";
 import nestingToc from 'eleventy-plugin-nesting-toc';
 
-// A linha 'import * as filters from "./_includes/filters.js";' foi REMOVIDA
-
 export default function(eleventyConfig) {
     
     // --- PASSTHROUGH (Cópia de Assets) ---
@@ -30,15 +28,22 @@ export default function(eleventyConfig) {
     });
 
     // --- FILTROS DE TEMPLATE ---
-    // A linha 'Object.keys(filters).forEach(...)' foi REMOVIDA
-    
-    // Adiciona os NOSSOS filtros personalizados
-    eleventyConfig.addFilter("absoluteUrl", (url, base) => new URL(url, base).toString());
     eleventyConfig.addFilter("slugify", function(str) {
         return slugify(str, { lower: true, strict: true, remove: /["]/g });
     });
     eleventyConfig.addFilter("url_encode", (str) => {
         return encodeURIComponent(str);
+    });
+
+    // ** AQUI ESTÁ A CORREÇÃO **
+    // Readiciona o filtro absoluteUrl que estava em falta
+    eleventyConfig.addFilter("absoluteUrl", (url, base) => {
+        try {
+            return (new URL(url, base)).toString();
+        } catch(e) {
+            console.error(`Error creating absolute URL for ${url}: ${e.message}`);
+            return url; // Retorna o URL original em caso de erro
+        }
     });
 
     // --- COLEÇÕES ---
