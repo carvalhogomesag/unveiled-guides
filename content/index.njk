@@ -1,29 +1,53 @@
----js
-const eleventyNavigation = {
-	key: "Home",
-	order: 1
-};
-
-const numberOfLatestPostsToShow = 3;
 ---
-{% set postsCount = collections.posts | length %}
-{% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
-<h1>Latest {{ latestPostsCount }} Post{% if latestPostsCount != 1 %}s{% endif %}</h1>
+title: "Your Expert Guides to the World's Greatest Landmarks"
+layout: "base.njk"
+---
 
-{% set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
-{% set postslistCounter = postsCount %}
-{% include "postslist.njk" %}
+{# Define a lista de posts (já vem ordenada pela nossa coleção) #}
+{% set postsInOrder = collections.post %}
 
-{% set morePosts = postsCount - numberOfLatestPostsToShow %}
-{% if morePosts > 0 %}
-<p>{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found in <a href="blog.njk">the archive</a>.</p>
+{# Pega no primeiro item como destaque #}
+{% set featuredPost = postsInOrder[0] %}
+
+{# Pega nos restantes #}
+{% set remainingPosts = postsInOrder | slice(1) %}
+
+
+{% if featuredPost %}
+<section class="featured-guide">
+    <a href="{{ featuredPost.url }}" class="featured-card-link">
+        <div class="featured-card">
+            <div class="featured-image-wrapper">
+                <img src="{{ featuredPost.data.featuredImage }}" alt="{{ featuredPost.data.title }}">
+            </div>
+            <div class="featured-content">
+                <span class="featured-tag">Latest Guide</span>
+                <h2 class="featured-title">{{ featuredPost.data.title }}</h2>
+                <p class="featured-summary">{{ featuredPost.data.summary }}</p>
+                <span class="card-read-more">Read Full Guide →</span>
+            </div>
+        </div>
+    </a>
+</section>
 {% endif %}
 
-{# List every content page in the project #}
-{#
-<ul>
-	{%- for entry in collections.all %}
-	<li><a href="{{ entry.url }}"><code>{{ entry.url }}</code></a></li>
-	{%- endfor %}
-</ul>
-#}
+
+{% if remainingPosts.length > 0 %}
+<h3 class="section-title">All Our Guides</h3>
+<div class="guides-grid">
+    {% for post in remainingPosts %}
+        <a href="{{ post.url }}" class="card-link">
+            <article class="card">
+                <div class="card-image-wrapper">
+                    <img src="{{ post.data.featuredImage }}" alt="{{ post.data.title }}" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">{{ post.data.title }}</h3>
+                    <p class="card-summary">{{ post.data.summary }}</p>
+                    <span class="card-read-more">Read Guide →</span>
+                </div>
+            </article>
+        </a>
+    {% endfor %}
+</div>
+{% endif %}
