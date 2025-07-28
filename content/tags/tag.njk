@@ -1,0 +1,35 @@
+---
+pagination:
+    data: collections
+    size: 1
+    alias: tag
+    filter:
+        - all
+        - nav
+        - post
+        - tags
+    
+permalink: /tags/{{ tag | slugify }}/
+layout: 'base.njk'
+---
+<div class="tag-header">
+    <h1>Guides tagged with: <span>{{ tag }}</span></h1>
+</div>
+
+<div class="guides-grid">
+    {% set postslist = collections[ tag ] %}
+    {% for post in postslist | reverse %}
+        <a href="{{ post.url }}" class="card-link">
+            <article class="card">
+                <div class="card-image-wrapper">
+                    <img src="{{ post.data.featuredImage }}" alt="View of {{ post.data.title }}" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">{{ post.data.title }}</h3>
+                    <p class="card-summary">{{ post.data.summary }}</p>
+                    <span class="card-read-more">Read Guide →</span>
+                </div>
+            </article>
+        </a>
+    {% endfor %}
+</div>

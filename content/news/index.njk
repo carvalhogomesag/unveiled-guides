@@ -1,0 +1,54 @@
+---
+title: "Your Expert Guides to the World's Greatest Landmarks"
+layout: "base.njk"
+---
+
+{# Define a lista de posts ordenada do mais novo para o mais antigo #}
+{% set postsInOrder = collections.post | reverse %}
+
+{# Pega no primeiro item dessa lista (o mais recente) como o post em destaque #}
+{% set featuredPost = postsInOrder[0] %}
+
+{# Cria a lista de posts restantes, excluindo o primeiro #}
+{% set remainingPosts = postsInOrder | slice(1) %}
+
+
+{% if featuredPost %}
+<section class="featured-guide">
+    <a href="{{ featuredPost.url }}" class="featured-card-link">
+        <div class="featured-card">
+            <div class="featured-image-wrapper">
+                <img src="{{ featuredPost.data.featuredImage }}" alt="{{ featuredPost.data.title }}">
+            </div>
+            <div class="featured-content">
+                <span class="featured-tag">Latest Guide</span>
+                <h2 class="featured-title">{{ featuredPost.data.title }}</h2>
+                <p class="featured-summary">{{ featuredPost.data.summary }}</p>
+                <span class="card-read-more">Read Full Guide →</span>
+            </div>
+        </div>
+    </a>
+</section>
+{% endif %}
+
+
+{% if remainingPosts.length > 0 %}
+<h3 class="section-title">All Our Guides</h3>
+
+<div class="guides-grid">
+    {% for post in remainingPosts %}
+    <a href="{git status{ post.url }}" class="card-link">
+        <article class="card">
+            <div class="card-image-wrapper">
+                <img src="{{ post.data.featuredImage }}" alt="{{ post.data.title }}" class="card-image">
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">{{ post.data.title }}</h3>
+                <p class="card-summary">{{ post.data.summary }}</p>
+                <span class="card-read-more">Read Guide →</span>
+            </div>
+        </article>
+    </a>
+    {% endfor %}
+</div>
+{% endif %}
