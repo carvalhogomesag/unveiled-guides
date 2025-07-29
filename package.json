@@ -2,7 +2,6 @@
   "name": "unveiled-guides",
   "version": "1.0.0",
   "description": "Travel guides",
-  "type": "module",
   "scripts": {
     "start": "npx @11ty/eleventy --serve",
     "build": "npx @11ty/eleventy"

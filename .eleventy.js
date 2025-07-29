@@ -1,8 +1,9 @@
-import slugify from "slugify";
-import markdownIt from "markdown-it";
-import markdownItAnchor from "markdown-it-anchor";
+const slugify = require("slugify");
+const markdownIt = require("markdown-it");
+const markdownItAnchor = require("markdown-it-anchor");
 
-export default function(eleventyConfig) {
+// Esta é a sintaxe CommonJS padrão para configurações do Eleventy.
+module.exports = function(eleventyConfig) {
 
     // Configuração do Markdown-It para adicionar IDs aos títulos
     const md = markdownIt({ html: true }).use(markdownItAnchor, {
@@ -16,8 +17,7 @@ export default function(eleventyConfig) {
     });
     eleventyConfig.setLibrary("md", md);
 
-    // FILTROS ESPECÍFICOS PARA NUNJUCKS - ESTA É A CORREÇÃO CRÍTICA
-    // Usar addNunjucksFilter garante que o filtro é registado no motor correto.
+    // Adiciona os filtros ao Nunjucks.
     eleventyConfig.addNunjucksFilter("generateToc", (content) => {
         if (!content) return '';
         
@@ -34,7 +34,6 @@ export default function(eleventyConfig) {
         return tocHtml;
     });
     
-    // Aplicamos a mesma lógica ao filtro slugify por consistência e robustez.
     eleventyConfig.addNunjucksFilter("slugify", (str) => {
         return slugify(str, { lower: true, strict: true, remove: /["]/g });
     });
