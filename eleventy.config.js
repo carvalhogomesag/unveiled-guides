@@ -16,8 +16,9 @@ export default function(eleventyConfig) {
     });
     eleventyConfig.setLibrary("md", md);
 
-    // Filtro personalizado para extrair títulos e criar a TOC
-    eleventyConfig.addFilter("generateToc", (content) => {
+    // FILTROS ESPECÍFICOS PARA NUNJUCKS - ESTA É A CORREÇÃO CRÍTICA
+    // Usar addNunjucksFilter garante que o filtro é registado no motor correto.
+    eleventyConfig.addNunjucksFilter("generateToc", (content) => {
         if (!content) return '';
         
         const headers = content.match(/<h([2-3]) id="([^"]+)">([^<]+)<\/h[2-3]>/g) || [];
@@ -33,8 +34,8 @@ export default function(eleventyConfig) {
         return tocHtml;
     });
     
-    // Filtro slugify para as tags (continua útil)
-    eleventyConfig.addFilter("slugify", (str) => {
+    // Aplicamos a mesma lógica ao filtro slugify por consistência e robustez.
+    eleventyConfig.addNunjucksFilter("slugify", (str) => {
         return slugify(str, { lower: true, strict: true, remove: /["]/g });
     });
 
