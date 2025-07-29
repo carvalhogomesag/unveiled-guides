@@ -13,11 +13,11 @@ layout: "base.njk"
             </div>
         </header>
 
-        {# Esta é a linha corrigida. O shortcode gera a Tabela de Conteúdos. #}
-        {% toc %}
+        {# Passo 1: Gera a TOC a partir do conteúdo final da página #}
+        {{ content | generateToc | safe }}
 
         <div class="article-body">
-            {# Esta linha renderiza o conteúdo principal do artigo. #}
+            {# Passo 2: Renderiza o conteúdo principal. O markdown-it já adicionou os IDs aos títulos. #}
             {{ content | safe }}
         </div>
 

@@ -1,45 +1,54 @@
 import slugify from "slugify";
-import nestingToc from 'eleventy-plugin-nesting-toc';
+import markdownIt from "markdown-it";
+import markdownItAnchor from "markdown-it-anchor";
 
 export default function(eleventyConfig) {
-    
-    // PASSO 1: CONFIGURAR OS MOTORES DE TEMPLATE PRIMEIRO.
-    // Isto é crucial para que os plugins saibam a que motor se ligar.
-    eleventyConfig.setTemplateFormats(["md", "njk", "html"]);
-    eleventyConfig.setLibrary("md", {
-        // Opções para o processador de Markdown, se necessário no futuro
-    });
-    eleventyConfig.setNunjucksEnvironmentOptions({
-        // Opções para o ambiente Nunjucks, se necessário no futuro
-    });
 
-    // PASSO 2: AGORA QUE O AMBIENTE ESTÁ PRONTO, ADICIONAR PLUGINS.
-    eleventyConfig.addPlugin(nestingToc, {
-        tags: ['h2', 'h3'],
-        wrapper: 'div',
-        wrapperClass: 'toc',
-        headingText: 'On This Page',
-        headingClass: 'toc-title'
+    // Configuração do Markdown-It para adicionar IDs aos títulos
+    const md = markdownIt({ html: true }).use(markdownItAnchor, {
+        permalink: markdownItAnchor.permalink.ariaHidden({
+            placement: "after",
+            class: "direct-link",
+            symbol: "#",
+        }),
+        level: [2, 3],
+        slugify: (str) => slugify(str, { lower: true, strict: true, remove: /["]/g })
     });
+    eleventyConfig.setLibrary("md", md);
 
-    // PASSO 3: ADICIONAR FILTROS, SHORTCODES E COLEÇÕES PERSONALIZADAS.
-    eleventyConfig.addFilter("slugify", function(str) {
-        return slugify(str, {
-            lower: true,
-            strict: true,
-            remove: /["]/g,
+    // Filtro personalizado para extrair títulos e criar a TOC
+    eleventyConfig.addFilter("generateToc", (content) => {
+        if (!content) return '';
+        
+        const headers = content.match(/<h([2-3]) id="([^"]+)">([^<]+)<\/h[2-3]>/g) || [];
+        if (headers.length === 0) return '';
+
+        let tocHtml = '<div class="toc"><h4 class="toc-title">On This Page</h4><ul>';
+        headers.forEach(header => {
+            const [,, id, text] = header.match(/<h[2-3] id="([^"]+)">([^<]+)<\/h[2-3]>/);
+            tocHtml += `<li><a href="#${id}">${text}</a></li>`;
         });
+        tocHtml += '</ul></div>';
+        
+        return tocHtml;
+    });
+    
+    // Filtro slugify para as tags (continua útil)
+    eleventyConfig.addFilter("slugify", (str) => {
+        return slugify(str, { lower: true, strict: true, remove: /["]/g });
     });
 
-    eleventyConfig.addCollection("post", function(collectionApi) {
-        return collectionApi.getFilteredByTag("post").sort((a, b) => b.date - a.date);
+    // Coleção de posts
+    eleventyConfig.addCollection("post", (collectionApi) => {
+        return collectionApi.getFilteredByTag("post").sort((a, b) => new Date(b.date) - new Date(a.date));
     });
 
-    // PASSO 4: COPIAR ASSETS ESTÁTICOS.
+    // Copiar assets
     eleventyConfig.addPassthroughCopy({ "public/": "/" });
 
-    // PASSO 5: RETORNAR A CONFIGURAÇÃO FINAL DAS PASTAS.
+    // Configuração de pastas
     return {
+        templateFormats: ["md", "njk", "html"],
         markdownTemplateEngine: "njk",
         htmlTemplateEngine: "njk",
         dir: {
