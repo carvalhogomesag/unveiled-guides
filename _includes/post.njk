@@ -13,9 +13,11 @@ layout: "base.njk"
             </div>
         </header>
 
-        {{ content | toc | safe }}
+        {# Esta é a linha corrigida. O shortcode gera a Tabela de Conteúdos. #}
+        {% toc %}
 
         <div class="article-body">
+            {# Esta linha renderiza o conteúdo principal do artigo. #}
             {{ content | safe }}
         </div>
 
