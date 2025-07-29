@@ -1,12 +1,14 @@
 import slugify from "slugify";
 import nestingToc from 'eleventy-plugin-nesting-toc';
 
-export default function(eleventyConfig) {
+// Usar "export default async function" é uma prática mais robusta para
+// configurações do Eleventy com ES Modules.
+export default async function(eleventyConfig) {
     
-    // A única coisa que precisamos: copiar os nossos assets.
+    // Copia os assets da pasta 'public' para a raiz do site.
     eleventyConfig.addPassthroughCopy({ "public/": "/" });
     
-    // O nosso plugin da Tabela de Conteúdos.
+    // Adiciona o plugin para a Tabela de Conteúdos (Table of Contents).
     eleventyConfig.addPlugin(nestingToc, {
         tags: ['h2', 'h3'],
         wrapper: 'div',
@@ -15,17 +17,21 @@ export default function(eleventyConfig) {
         headingClass: 'toc-title'
     });
 
-    // O nosso filtro para as tags.
+    // Adiciona um filtro personalizado para criar "slugs" para as URLs das tags.
     eleventyConfig.addFilter("slugify", function(str) {
-        return slugify(str, { lower: true, strict: true, remove: /["]/g });
+        return slugify(str, {
+            lower: true,
+      strict: true,
+            remove: /["]/g,
+    });
     });
 
-    // A nossa coleção de posts.
+    // Cria uma coleção "post" com todos os artigos, ordenados por data (do mais novo para o mais antigo).
     eleventyConfig.addCollection("post", function(collectionApi) {
         return collectionApi.getFilteredByTag("post").sort((a, b) => b.date - a.date);
     });
 
-    // A configuração de pastas.
+    // Define a estrutura de pastas do projeto para o Eleventy.
     return {
         templateFormats: ["md", "njk", "html"],
         markdownTemplateEngine: "njk",
