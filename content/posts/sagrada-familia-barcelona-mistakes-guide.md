@@ -17,7 +17,7 @@ sidebar:
   query: "barcelona"
 ---
 
-![O interior da Sagrada Família, com colunas que se assemelham a uma floresta de pedra.](/images/sagrada-familia-barcelona-interior.jpg)
+![O interior da Sagrada Família, com colunas que se assemelham a uma floresta de pedra.](/images/sagrada-familia-barcelona.jpg)
 
 I’ve been all over the world. I’ve stood before the Taj Mahal, I’ve walked through St. Peter's Basilica. I thought I had seen the pinnacle of religious architecture. And then I came to Barcelona and stood before the Sagrada Família.
 
