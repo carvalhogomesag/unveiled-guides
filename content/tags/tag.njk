@@ -1,14 +1,5 @@
----
-{# A CORREÇÃO CRÍTICA é adicionar aspas à volta de "collections.tagList" #}
-{# Isto diz ao YAML para tratar o valor como uma única string, resolvendo o erro de sintaxe. #}
-pagination:
-    data: "collections.tagList"
-    size: 1
-    alias: tag
-    
-permalink: /tags/{{ tag | slugify }}/
-layout: 'base.njk'
----
+{# Não há mais front matter aqui! A configuração está agora no ficheiro tags.json #}
+
 <div class="tag-header">
     <h1>Guides tagged with: <span>{{ tag }}</span></h1>
 </div>
