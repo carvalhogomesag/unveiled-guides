@@ -1,7 +1,7 @@
 ---
 title: "5 Mistakes Everyone Makes at Sagrada Família (And How to Avoid Them)"
 layout: "post.njk"
-date: "2025-07-30"
+date: "2025-06-30"
 draft: false
 tags:
   - post
