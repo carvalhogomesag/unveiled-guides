@@ -43,6 +43,20 @@ module.exports = function(eleventyConfig) {
         return collectionApi.getFilteredByTag("post").sort((a, b) => new Date(b.date) - new Date(a.date));
     });
 
+    // *** NOVO BLOCO ADICIONADO ***
+    // Cria uma coleção limpa e única de todas as tags para evitar conflitos.
+    eleventyConfig.addCollection("tagList", function(collectionApi) {
+        const tagSet = new Set();
+        collectionApi.getAll().forEach(item => {
+            (item.data.tags || []).forEach(tag => tagSet.add(tag.toLowerCase()));
+        });
+
+        const undesiredTags = new Set(["post", "posts", "all", "nav"]);
+        const filteredTags = [...tagSet].filter(tag => !undesiredTags.has(tag));
+        return filteredTags.sort();
+    });
+    // *** FIM DO NOVO BLOCO ***
+
     // Copiar assets
     eleventyConfig.addPassthroughCopy({ "public/": "/" });
 

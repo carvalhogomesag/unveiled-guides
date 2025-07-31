@@ -1,13 +1,11 @@
 ---
+{# ESTA É A CORREÇÃO CRÍTICA: #}
+{# 1. Usamos a nossa coleção limpa "tagList" como fonte de dados. #}
+{# 2. Removemos o filtro, pois a nossa coleção já está filtrada. #}
 pagination:
-    data: collections
+    data: collections.tagList
     size: 1
     alias: tag
-    filter:
-        - all
-        - nav
-        - post
-        - tags
     
 permalink: /tags/{{ tag | slugify }}/
 layout: 'base.njk'
@@ -17,6 +15,7 @@ layout: 'base.njk'
 </div>
 
 <div class="guides-grid">
+    {# Esta linha agora funciona perfeitamente, pois a variável 'tag' será sempre única e em minúsculas #}
     {% set postslist = collections[ tag ] %}
     {% for post in postslist | reverse %}
         <a href="{{ post.url }}" class="card-link">
