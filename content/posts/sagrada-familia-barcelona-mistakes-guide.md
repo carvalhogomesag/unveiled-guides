@@ -8,7 +8,7 @@ tags:
   - Barcelona
   - History
   - Architecture
-  - Unesco
+  - unesco
   - Travel Tips
 featuredImage: "/images/sagrada-familia-barcelona.jpg"
 summary: "I've seen the world's greatest buildings, but nothing prepared me for Sagrada Família. It's a masterpiece, but most visitors make critical mistakes. This is my honest guide to experiencing Gaudí's dream the right way."
