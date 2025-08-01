@@ -38,12 +38,14 @@ module.exports = function(eleventyConfig) {
         return slugify(str, { lower: true, strict: true, remove: /["]/g });
     });
 
+    // Coleções
+    // ----------------------------------------------------------------
+
     // Coleção de posts
     eleventyConfig.addCollection("post", (collectionApi) => {
         return collectionApi.getFilteredByTag("post").sort((a, b) => new Date(b.date) - new Date(a.date));
     });
 
-    // *** NOVO BLOCO ADICIONADO ***
     // Cria uma coleção limpa e única de todas as tags para evitar conflitos.
     eleventyConfig.addCollection("tagList", function(collectionApi) {
         const tagSet = new Set();
@@ -55,7 +57,16 @@ module.exports = function(eleventyConfig) {
         const filteredTags = [...tagSet].filter(tag => !undesiredTags.has(tag));
         return filteredTags.sort();
     });
-    // *** FIM DO NOVO BLOCO ***
+
+    // Shortcodes
+    // ----------------------------------------------------------------
+    
+    // Shortcode para o ano atual (usado no copyright do rodapé)
+    eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+
+
+    // Configurações Finais
+    // ----------------------------------------------------------------
 
     // Copiar assets
     eleventyConfig.addPassthroughCopy({ "public/": "/" });

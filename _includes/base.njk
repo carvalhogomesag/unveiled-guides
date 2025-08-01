@@ -82,9 +82,8 @@
         {{ content | safe }}
     </main>
 
-    <footer>
-        <p>© 2024 Unveiled Guides. All rights reserved. Your adventure starts here.</p>
-    </footer>
+    {# SUBSTITUÍMOS O ANTIGO FOOTER POR ESTE INCLUDE, QUE CARREGA O NOSSO NOVO FOOTER ROBUSTO #}
+    {% include "partials/footer.njk" %}
 
     <script src="/js/mobile-nav.js" defer></script>
 </body>

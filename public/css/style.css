@@ -603,3 +603,73 @@ div.toc a {
 div.toc a:hover {
     text-decoration: underline;
 }
+
+/* =========================================
+   Site Footer Styles
+   ========================================= */
+
+.site-footer {
+    background-color: #2c3e50; /* Um azul escuro, cor clássica para rodapés */
+    color: #ecf0f1; /* Um branco acinzentado para o texto */
+    padding: 3rem 1.5rem;
+    margin-top: 4rem; /* Adiciona espaço acima do rodapé */
+    font-size: 0.9rem;
+}
+
+.footer-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr; /* Layout de uma coluna por defeito (mobile-first) */
+    gap: 2rem;
+}
+
+.footer-title {
+    color: #ffffff;
+    font-family: 'Cinzel', serif; /* Mantém a identidade da marca */
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #3498db; /* Um toque de cor no sublinhado */
+    padding-bottom: 0.5rem;
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-nav a,
+.site-footer a {
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+.site-footer a:hover {
+    color: #3498db; /* Cor de destaque no hover */
+    text-decoration: underline;
+}
+
+.affiliate-disclaimer {
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.copyright {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Layout de 3 colunas para ecrãs maiores */
+@media (min-width: 768px) {
+    .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

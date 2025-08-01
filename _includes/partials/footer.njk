@@ -1,0 +1,35 @@
+<!-- _includes/partials/footer.njk -->
+<footer class="site-footer">
+    <div class="footer-grid">
+        
+        <!-- Coluna 1: Navegação -->
+        <div class="footer-column">
+            <h4 class="footer-title">Navigation</h4>
+            <ul class="footer-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                {# Este link leva para a página inicial, que funciona como o nosso arquivo de guias #}
+                <li><a href="/">All Guides</a></li> 
+            </ul>
+        </div>
+
+        <!-- Coluna 2: Sobre Nós -->
+        <div class="footer-column">
+            <h4 class="footer-title">About Us</h4>
+            <p>Unveiled Guides goes beyond the surface, offering deep historical context and practical tips to help you travel smarter.</p>
+        </div>
+
+        <!-- Coluna 3: Legal & Disclaimer -->
+        <div class="footer-column">
+            <h4 class="footer-title">Legal</h4>
+            <p class="affiliate-disclaimer">
+                As an affiliate, we earn from qualifying purchases. This helps us keep the guides free and updated.
+            </p>
+            <p class="copyright">
+                © {% year %} Unveiled Guides. All rights reserved.
+            </p>
+            <a href="/privacy-policy/">Privacy Policy</a>
+        </div>
+
+    </div>
+</footer>
