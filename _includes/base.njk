@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {# --- PASSO 4: Alterar os scripts de rastreamento --- #}
+    {# Adicionamos 'type="text/plain"' para que o navegador os ignore por defeito. #}
+    {# Adicionamos 'data-consent="true"' para que o nosso JS saiba quais scripts ativar. #}
+
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YQ6WR6XMCC"></script>
-    <script>
+    <script type="text/plain" data-consent="true" async src="https://www.googletagmanager.com/gtag/js?id=G-YQ6WR6XMCC"></script>
+    <script type="text/plain" data-consent="true">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -30,9 +34,15 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <!-- GetYourGuide Analytics -->
-    <script async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id="PMW7G72"></script>
+    <script type="text/plain" data-consent="true" async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id="PMW7G72"></script>
 </head>
 <body>
+    {# --- PASSO 1: Adicionar o HTML do Banner de Cookies --- #}
+    <div id="cookie-consent-banner" class="cookie-banner">
+        <p>This site uses cookies to enhance your experience and for affiliate marketing purposes. By clicking "Accept," you agree to our use of cookies. <a href="/privacy-policy/">Learn more</a>.</p>
+        <button id="cookie-consent-accept" class="cookie-banner-button">Accept</button>
+    </div>
+
     <header class="site-header">
         <a href="/" class="logo-link">
             <svg class="site-logo" width="280" height="40" viewBox="0 0 280 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,10 +91,11 @@
     <main>
         {{ content | safe }}
     </main>
-
-    {# SUBSTITUÍMOS O ANTIGO FOOTER POR ESTE INCLUDE, QUE CARREGA O NOSSO NOVO FOOTER ROBUSTO #}
+    
     {% include "partials/footer.njk" %}
 
+    {# --- PASSO 5: Adicionar o script que controla o banner --- #}
     <script src="/js/mobile-nav.js" defer></script>
+    <script src="/js/cookie-consent.js" defer></script>
 </body>
 </html>
