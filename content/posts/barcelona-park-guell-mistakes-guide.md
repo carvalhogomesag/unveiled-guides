@@ -2,11 +2,13 @@
 title: "Visiting Park Güell? You Need to Read This First."
 layout: "post.njk"
 date: "2024-07-26"
+draft: false
+category: "Architecture"
 tags:
   - post
   - Barcelona
   - Architecture
-  - UNESCO
+  - unesco
   - Travel Tips
 templateEngineOverride: md, njk
 featuredImage: "/images/barcelona-park-guell-lizard.jpg"

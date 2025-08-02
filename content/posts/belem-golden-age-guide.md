@@ -2,17 +2,20 @@
 title: "The Church Built on Spice & Gold: An Insider's Guide to Belém"
 layout: "post.njk"
 date: "2024-07-20"
+draft: false
+category: "History"
 tags:
   - post
   - Lisbon
   - History
   - Architecture
-  - UNESCO
-templateEngineOverride: md, njk
+  - unesco
 featuredImage: "/images/jeronimos-cloister-hero.jpg"
 summary: "Explore the heart of Portugal's Golden Age. Understand why Jerónimos Monastery was built with the profits of spices and how this riverside district tells a story of global discovery."
+sidebar:
+  title: "Top Lisbon Experiences"
+  query: "Lisbon"
 ---
-
 ![O claustro do Mosteiro dos Jerónimos banhado pelo sol da tarde](/images/jeronimos-cloister-hero.jpg)
 
 Every tourist in Lisbon goes to Belém. You've seen the pictures: the magnificent Jerónimos Monastery, the iconic Belém Tower, and the legendary queue for a custard tart. It's easy to go, take a few photos, and tick the boxes. But most people miss the epic story that this riverside district tells.

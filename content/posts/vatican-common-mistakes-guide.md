@@ -2,14 +2,15 @@
 title: "Don't Make This One Mistake at the Vatican (A Guide's Tips)"
 layout: "post.njk"
 date: "2024-07-24"
+draft: false
+category: "Travel Tips"
 tags:
   - post
   - Rome
   - Vatican
   - Travel Tips
   - History
-  - UNESCO
-templateEngineOverride: md, njk
+  - unesco
 featuredImage: "/images/vatican-sistine-chapel-ceiling.jpg"
 summary: "The Vatican is breathtaking, but one simple mistake can get you denied entry. Learn the crucial dress code rule and other essential tips for a seamless visit to the Sistine Chapel and Vatican Museums."
 sidebar:

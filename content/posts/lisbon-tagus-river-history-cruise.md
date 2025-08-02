@@ -2,14 +2,18 @@
 title: "Sailing Through History: Why a Tagus River Cruise is Essential in Lisbon"
 layout: "post.njk"
 date: "2024-07-21"
+draft: false
+category: "Boat Trips"
 tags:
   - post
   - Lisbon
   - History
   - Boat Trips
-templateEngineOverride: md, njk
 featuredImage: "/images/tagus-river-sunset-cruise.jpg"
 summary: "Lisbon's soul is tied to the Tagus River. Discover the history that unfolded on these waters, from Roman legions to the caravels of legendary explorers, and learn the best way to experience it today."
+sidebar:
+  title: "Top Lisbon Cruises"
+  query: "Lisbon river cruise"
 ---
 
 ![Veleiro no Rio Tejo ao pôr do sol, com a Ponte 25 de Abril ao fundo](/images/tagus-river-sunset-cruise.jpg)

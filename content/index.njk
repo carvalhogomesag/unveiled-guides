@@ -3,22 +3,22 @@ title: "Your Expert Guides to the World's Greatest Landmarks"
 layout: "base.njk"
 ---
 
-{# ESTA VERSÃO NÃO TEM A SECÇÃO "HERO" DUPLICADA #}
-{# ELA APENAS MOSTRA A GRELHA DE ARTIGOS #}
+{# Título da secção principal de guias #}
+<h2 class="section-title">All Our Guides</h2>
 
-<h3 class="section-title">All Our Guides</h3>
-
+{# A nossa nova grelha de cards, agora com classes CSS atualizadas #}
 <div class="guides-grid">
     {% for post in collections.post %}
-        <a href="{{ post.url }}" class="card-link">
-            <article class="card">
-                <div class="card-image-wrapper">
-                    <img src="{{ post.data.featuredImage }}" alt="{{ post.data.title }}" class="card-image">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">{{ post.data.title }}</h3>
-                    <p class="card-summary">{{ post.data.summary }}</p>
-                    <span class="card-read-more">Read Guide →</span>
+        {# Cada card é um link para o artigo completo #}
+        <a href="{{ post.url }}" class="guide-card-link">
+            {# A imagem de fundo é definida dinamicamente a partir do front matter #}
+            <article class="guide-card" style="background-image: url('{{ post.data.featuredImage }}');">
+                <div class="guide-card-content">
+                    {# Apenas mostra a categoria se ela existir no front matter #}
+                    {% if post.data.category %}
+                        <span class="guide-card-category">{{ post.data.category }}</span>
+                    {% endif %}
+                    <h3 class="guide-card-title">{{ post.data.title }}</h3>
                 </div>
             </article>
         </a>

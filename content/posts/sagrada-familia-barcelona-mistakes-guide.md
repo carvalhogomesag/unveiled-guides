@@ -1,8 +1,9 @@
 ---
 title: "5 Mistakes Everyone Makes at Sagrada Família (And How to Avoid Them)"
 layout: "post.njk"
-date: "2025-06-30"
+date: "2024-06-30"
 draft: false
+category: "Travel Tips"
 tags:
   - post
   - Barcelona

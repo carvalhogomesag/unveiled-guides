@@ -2,15 +2,19 @@
 title: "The Key to Lisbon? An Honest Review of the Lisboa Card"
 layout: "post.njk"
 date: "2024-07-22"
+draft: false
+category: "Travel Tips"
 tags:
   - post
   - Lisbon
   - Travel Tips
-  - UNESCO
+  - unesco
   - History
-templateEngineOverride: md, njk
 featuredImage: "/images/lisboa-card-attractions.jpg"
 summary: "Does the Lisboa Card actually save you time and money? We break down the benefits, from free transport to skip-the-line access at top attractions, to help you decide if it's the right choice for your trip."
+sidebar:
+  title: "Top Lisbon Attractions"
+  query: "Lisbon"
 ---
 
 ![Montagem de imagens mostrando o Lisboa Card e atrações como o Mosteiro dos Jerónimos e a Torre de Belém](/images/lisboa-card-attractions.jpg)

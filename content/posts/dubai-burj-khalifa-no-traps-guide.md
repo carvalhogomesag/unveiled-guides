@@ -2,12 +2,13 @@
 title: "Burj Khalifa Without the Traps: Your 2024 Insider's Guide"
 layout: "post.njk"
 date: "2024-07-22"
+draft: false
+category: "Travel Tips"
 tags:
   - post
   - Dubai
   - Travel Tips
   - Architecture
-templateEngineOverride: md, njk
 featuredImage: "/images/dubai-burj-khalifa-view.jpg"
 summary: "Visiting the world's tallest building? Don't fall into the common tourist traps. Learn the difference between the observation decks and why a specific ticket is the key to a truly premium experience."
 sidebar:

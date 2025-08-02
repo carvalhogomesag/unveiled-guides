@@ -2,13 +2,19 @@
 title: "Don't Visit Pena Palace Until You Read This: A Historian's Guide"
 layout: "post.njk"
 date: "2024-05-21"
+draft: false
+category: "Palaces"
 tags:
   - post
   - Sintra
   - Palaces
-templateEngineOverride: md, njk
+  - History
+  - Architecture
 featuredImage: "/images/pena-palace-hero.jpg"
 summary: "Discover the secrets of Sintra's fairytale castle, a 19th-century masterpiece of Romanticism born from a king's imagination. Learn the meaning behind its colors and architecture before you go."
+sidebar:
+  title: "Top Sintra Experiences"
+  query: "Sintra"
 ---
 
 ![Vista do Palácio da Pena num dia de sol](/images/pena-palace-hero.jpg)

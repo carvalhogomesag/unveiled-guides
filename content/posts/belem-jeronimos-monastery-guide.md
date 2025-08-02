@@ -3,6 +3,7 @@ title: "Belém's Golden Trio: The Mistake Most Tourists Make (And How to Experie
 layout: "post.njk"
 date: "2024-05-22"
 draft: false
+category: "Travel Tips"
 tags:
   - post
   - Lisbon

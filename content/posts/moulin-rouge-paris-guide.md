@@ -3,6 +3,7 @@ title: "A Night at the Moulin Rouge: The Truth Before You Book (It’s Not Like 
 layout: "post.njk"
 date: "2024-05-23"
 draft: false
+category: "Travel Tips"
 tags:
   - post
   - Paris
@@ -14,7 +15,6 @@ sidebar:
   title: "Iconic Paris Shows"
   query: "Paris shows"
 ---
-
 ![O icónico moinho de vento vermelho do Moulin Rouge iluminado à noite em Paris.](/images/moulin-rouge-paris.jpg)
 
 Paris. The word itself conjures images of twinkling lights, walks along the Seine, and the enigmatic smile of the Mona Lisa. And if you're anything like me, and you've seen *that* movie, one image burns brighter than all others: the legendary Moulin Rouge.

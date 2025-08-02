@@ -2,13 +2,14 @@
 title: "5 Tourist Traps to Avoid in Paris (A Local's Guide)"
 layout: "post.njk"
 date: "2024-07-23"
+draft: false
+category: "Travel Tips"
 tags:
   - post
   - Paris
   - Travel Tips
   - History
-  - UNESCO
-templateEngineOverride: md, njk
+  - unesco
 featuredImage: "/images/paris-rooftops-eiffel.jpg"
 summary: "Visiting the City of Light? Don't let common mistakes ruin your trip. From dining in the wrong places to wasting hours in queues, here are 5 essential tips for a seamless Paris experience."
 sidebar:

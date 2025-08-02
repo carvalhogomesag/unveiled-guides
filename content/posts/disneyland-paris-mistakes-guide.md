@@ -2,12 +2,13 @@
 title: "Going to Disneyland Paris? Read This Before You Book Anything"
 layout: "post.njk"
 date: "2024-07-25"
+draft: false
+category: "Family"
 tags:
   - post
   - Paris
   - Family
   - Travel Tips
-templateEngineOverride: md, njk
 featuredImage: "/images/disneyland-paris-castle.jpg"
 summary: "Unlock a truly magical trip. From navigating the two parks to mastering the app and skipping the longest queues, this is the essential guide every visitor needs before going to Disneyland Paris."
 sidebar:
