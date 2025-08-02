@@ -1,7 +1,7 @@
 ---
 title: "The #1 Scam in Montmartre (And Why You Should Still Go)"
 layout: "post.njk"
-date: "2024-05-27"
+date: "2025-07-27"
 draft: false
 categories:
   - "Travel Tips"
