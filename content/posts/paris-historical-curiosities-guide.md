@@ -44,7 +44,7 @@ By the 1800s, after the French Revolution, Notre-Dame was in ruins and close to 
 
 Montmartre is famous as the bohemian hub where artists like Picasso and Van Gogh lived and worked. But it holds another secret from its days as a village outside the city walls: the **Clos Montmartre**. It's the last remaining working vineyard in Paris, a tiny, charming plot of land that produces a small batch of wine each year. It’s a beautiful, quiet reminder of the area's rural past.
 
-<div data-gyg-href="https://widget.getyourguide.com/default/availability.frame" data-gyg-tour-id="280242" data-gyg-locale-code="en-US" data-gyg-currency="EUR" data-gyg-widget="availability" data-gyg-variant="horizontal" data-gyg-partner-id="PMW7G72"></div>
+<div data-gyg-href="https://widget.getyourguide.com/default/availability.frame" data-gyg-tour-id="49746" data-gyg-locale-code="en-US" data-gyg-currency="EUR" data-gyg-widget="availability" data-gyg-variant="horizontal" data-gyg-partner-id="PMW7G72"></div>
 
 ## 6. The "New" Bridge is Actually the Oldest
 
