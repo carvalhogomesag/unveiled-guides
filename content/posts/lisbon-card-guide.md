@@ -3,7 +3,8 @@ title: "The Key to Lisbon? An Honest Review of the Lisboa Card"
 layout: "post.njk"
 date: "2024-07-22"
 draft: false
-category: "Travel Tips"
+categories:
+  - "Travel Tips"
 tags:
   - post
   - Lisbon

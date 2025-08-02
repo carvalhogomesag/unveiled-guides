@@ -3,7 +3,9 @@ title: "10 Paris Secrets Hiding in Plain Sight (Don't Visit Until You Know These
 layout: "post.njk"
 date: "2024-05-25" 
 draft: false
-category: "History"
+categories:
+  - "Travel Tips"
+  - "History"
 tags:
   - post
   - Paris

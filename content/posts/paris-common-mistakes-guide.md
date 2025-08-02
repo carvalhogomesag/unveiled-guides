@@ -3,7 +3,8 @@ title: "5 Tourist Traps to Avoid in Paris (A Local's Guide)"
 layout: "post.njk"
 date: "2024-07-23"
 draft: false
-category: "Travel Tips"
+categories:
+  - "Travel Tips"
 tags:
   - post
   - Paris

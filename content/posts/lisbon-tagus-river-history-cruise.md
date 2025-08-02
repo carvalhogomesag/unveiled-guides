@@ -3,7 +3,9 @@ title: "Sailing Through History: Why a Tagus River Cruise is Essential in Lisbon
 layout: "post.njk"
 date: "2024-07-21"
 draft: false
-category: "Boat Trips"
+categories:
+  - "Boat Trips"
+  - "Family"
 tags:
   - post
   - Lisbon

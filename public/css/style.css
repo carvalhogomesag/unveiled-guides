@@ -808,6 +808,15 @@ div.toc a:hover {
     color: #ffffff;
 }
 
+/* --- NOVO BLOCO ADICIONADO --- */
+/* Estilo para o container que agrupa as categorias */
+.guide-card-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem; /* Removemos a margem da categoria individual e colocamos aqui */
+}
+
 .guide-card-category {
     display: inline-block;
     background-color: var(--primary-blue); /* Usa a nossa cor primária da marca */
@@ -817,7 +826,7 @@ div.toc a:hover {
     font-size: 0.75rem;
     font-weight: bold;
     text-transform: uppercase;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; <-- Esta linha foi removida daqui */
 }
 
 .guide-card-title {

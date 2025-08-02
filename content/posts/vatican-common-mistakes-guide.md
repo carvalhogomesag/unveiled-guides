@@ -3,7 +3,9 @@ title: "Don't Make This One Mistake at the Vatican (A Guide's Tips)"
 layout: "post.njk"
 date: "2024-07-24"
 draft: false
-category: "Travel Tips"
+categories:
+  - "Travel Tips"
+  - "History"
 tags:
   - post
   - Rome

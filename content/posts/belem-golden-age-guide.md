@@ -3,7 +3,9 @@ title: "The Church Built on Spice & Gold: An Insider's Guide to Belém"
 layout: "post.njk"
 date: "2024-07-20"
 draft: false
-category: "History"
+categories:
+  - "History"
+  - "Family"
 tags:
   - post
   - Lisbon

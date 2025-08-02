@@ -3,7 +3,8 @@ title: "Landing in Lisbon: A Local's Guide to Navigating the Airport Arrival"
 layout: "post.njk"
 date: "2024-07-20"
 draft: false
-category: "Travel Tips"
+categories:
+  - "Travel Tips"
 tags:
   - post
   - Lisbon

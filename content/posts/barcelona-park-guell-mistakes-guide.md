@@ -3,7 +3,9 @@ title: "Visiting Park Güell? You Need to Read This First."
 layout: "post.njk"
 date: "2024-07-26"
 draft: false
-category: "Architecture"
+categories:
+  - "Architecture"
+  - "History"
 tags:
   - post
   - Barcelona

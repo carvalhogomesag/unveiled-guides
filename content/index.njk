@@ -6,7 +6,6 @@ layout: "base.njk"
 {# Título da secção principal de guias #}
 <h2 class="section-title">All Our Guides</h2>
 
-{# A nossa nova grelha de cards, agora com classes CSS atualizadas #}
 <div class="guides-grid">
     {% for post in collections.post %}
         {# Cada card é um link para o artigo completo #}
@@ -14,11 +13,21 @@ layout: "base.njk"
             {# A imagem de fundo é definida dinamicamente a partir do front matter #}
             <article class="guide-card" style="background-image: url('{{ post.data.featuredImage }}');">
                 <div class="guide-card-content">
-                    {# Apenas mostra a categoria se ela existir no front matter #}
-                    {% if post.data.category %}
-                        <span class="guide-card-category">{{ post.data.category }}</span>
-                    {% endif %}
+                    
+                    {# --- ESTA É A ALTERAÇÃO CRÍTICA --- #}
+                    {# Novo container para as categorias #}
+                    <div class="guide-card-categories">
+                        {# Verifica se a lista 'categories' existe e não está vazia #}
+                        {% if post.data.categories and post.data.categories.length %}
+                            {# Percorre a lista de categorias, mas limita a no máximo 2 #}
+                            {% for category in post.data.categories | limit(2) %}
+                                <span class="guide-card-category">{{ category }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
                     <h3 class="guide-card-title">{{ post.data.title }}</h3>
+
                 </div>
             </article>
         </a>

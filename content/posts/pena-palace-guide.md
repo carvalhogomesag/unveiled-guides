@@ -3,7 +3,9 @@ title: "Don't Visit Pena Palace Until You Read This: A Historian's Guide"
 layout: "post.njk"
 date: "2024-05-21"
 draft: false
-category: "Palaces"
+categories:
+  - "Architecture"
+  - "History"
 tags:
   - post
   - Sintra

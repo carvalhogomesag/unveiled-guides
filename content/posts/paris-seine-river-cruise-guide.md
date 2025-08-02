@@ -3,7 +3,9 @@ title: "Why the Best View of Paris Isn't From the Eiffel Tower"
 layout: "post.njk"
 date: "2023-10-26"
 draft: false
-category: "Architecture"
+categories:
+  - "Architecture"
+  - "History"
 tags:
   - post
   - Paris

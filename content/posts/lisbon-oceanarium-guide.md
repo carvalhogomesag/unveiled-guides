@@ -3,7 +3,9 @@ title: "Beyond the Glass: A Guide to Lisbon's World-Class Oceanarium"
 layout: "post.njk"
 date: "2024-07-20"
 draft: false
-category: "Family"
+categories:
+  - "Travel Tips"
+  - "Family"
 tags:
   - post
   - Lisbon

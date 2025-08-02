@@ -3,7 +3,8 @@ title: "Going to Disneyland Paris? Read This Before You Book Anything"
 layout: "post.njk"
 date: "2024-07-25"
 draft: false
-category: "Family"
+categories:
+  - "Family"
 tags:
   - post
   - Paris

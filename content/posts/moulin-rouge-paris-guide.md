@@ -3,7 +3,8 @@ title: "A Night at the Moulin Rouge: The Truth Before You Book (It’s Not Like 
 layout: "post.njk"
 date: "2024-05-23"
 draft: false
-category: "Travel Tips"
+categories:
+  - "History"
 tags:
   - post
   - Paris
