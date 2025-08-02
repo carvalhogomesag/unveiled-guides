@@ -17,7 +17,9 @@ module.exports = function(eleventyConfig) {
     });
     eleventyConfig.setLibrary("md", md);
 
-    // Adiciona os filtros ao Nunjucks.
+    // Filtros Nunjucks
+    // ----------------------------------------------------------------
+
     eleventyConfig.addNunjucksFilter("generateToc", (content) => {
         if (!content) return '';
         
@@ -37,6 +39,9 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addNunjucksFilter("slugify", (str) => {
         return slugify(str, { lower: true, strict: true, remove: /["]/g });
     });
+
+    // Filtro para limitar o número de itens num array (usado nos cards de categoria)
+    eleventyConfig.addNunjucksFilter("limit", (arr, limit) => arr.slice(0, limit));
 
     // Coleções
     // ----------------------------------------------------------------
