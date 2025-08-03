@@ -56,3 +56,5 @@ They aren't competitors. The Frame tells the story of Dubai's past and present; 
 It's a "can't-miss" tour for anyone interested in technology, design, or simply seeing something truly unique.
 
 To get the best price and secure your spot, I recommend booking your **[Museum of the Future Admission Ticket](https://www.getyourguide.com/dubai-l173/dubai-museum-of-the-future-admission-ticket-t411488/?partner_id=PMW7G72&cmp=share_to_earn)** as soon as you know your travel dates.
+
+<div data-gyg-href="https://widget.getyourguide.com/default/availability.frame" data-gyg-tour-id="411488" data-gyg-locale-code="en-US" data-gyg-currency="USD" data-gyg-widget="availability" data-gyg-variant="horizontal" data-gyg-partner-id="PMW7G72"></div>
