@@ -1,7 +1,7 @@
 ---
 title: "The Secret to a Crowd-Free Van Gogh Museum Visit (And Why You'll Need It)"
 layout: "post.njk"
-date: "2024-05-29"
+date: "2025-07-29"
 draft: false
 categories:
   - "Art"
