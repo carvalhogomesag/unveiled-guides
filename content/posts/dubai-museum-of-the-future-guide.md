@@ -1,7 +1,7 @@
 ---
 title: "Dubai's Future Museum: Is It Worth $45? The Honest Answer."
 layout: "post.njk"
-date: "2024-05-28"
+date: "2025-07-28"
 draft: false
 categories:
   - "Travel Tips"
