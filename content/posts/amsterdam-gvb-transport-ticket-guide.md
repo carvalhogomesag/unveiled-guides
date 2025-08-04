@@ -1,7 +1,7 @@
 ---
 title: "The Amsterdam Travel Card Mistake That Costs Tourists Money"
 layout: "post.njk"
-date: "2024-05-30"
+date: "2025-07-30"
 draft: false
 categories:
   - "Travel Tips"
